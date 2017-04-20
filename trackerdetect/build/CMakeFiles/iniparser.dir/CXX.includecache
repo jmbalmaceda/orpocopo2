@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/datos/Dropbox/orco/codigo/trackerdetect/ini.cpp
+cassert
+-
+map
+-
+list
+-
+stdexcept
+-
+string
+-
+cstring
+-
+iostream
+-
+fstream
+-
+sstream
+-
+

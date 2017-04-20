@@ -1,0 +1,169 @@
+#include <iostream>
+#include <stdexcept>
+#include <opencv2/objdetect.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/video.hpp>
+#include <opencv2/videoio.hpp>
+#include <opencv2/objdetect/detection_based_tracker.hpp>
+
+
+#include <mysql.h>
+/* Connection parameter and sample data */
+#include "examples.h"
+
+//#include <opencv2/tracking.hpp>
+/*
+#define MINH 80
+#define MINW 80
+#define MAXH 180
+#define MAXW 120
+*/
+#define MINH 80
+#define MINW 80
+#define MAXH 100
+#define MAXW 100
+#define MINTIMEDETECT 500
+using namespace cv;
+using namespace std;
+
+
+  
+  
+const char* keys =
+{
+    "{ help h      |                     | print help message }"
+    "{ camera c    |                     | enable camera capturing }"
+    "{ video v     | /recorte.mp4  | use video as input }"
+    "{ cascade c   | g:/Dropbox/orco/cascadeTraining/trainings/santarosa/upbody24x24/cascade.xml | cascade training file }"
+	"{ prueba	   |					 |  prueba dtail}"
+};
+
+class CascadeDetectorAdapter: public DetectionBasedTracker::IDetector
+{
+public:
+    CascadeDetectorAdapter(cv::Ptr<cv::CascadeClassifier> detector,Size minS,Size maxS):
+        IDetector(),
+        Detector(detector)
+    {
+        CV_Assert(detector);
+		minSize=minS;
+		maxSize=maxS;
+    }
+
+    void detect(const cv::Mat &Image, std::vector<cv::Rect> &objects)
+    {
+       // Detector->detectMultiScale(Image, objects, scaleFactor, minNeighbours, 0, minObjSize, maxObjSize);
+       Detector->detectMultiScale(Image, objects, scaleFactor, 20, 0,  minSize, maxSize);
+   
+    }
+
+    virtual ~CascadeDetectorAdapter()
+    {}
+
+private:
+    CascadeDetectorAdapter();
+    Size minSize;
+    Size maxSize;
+    cv::Ptr<cv::CascadeClassifier> Detector;
+};
+
+
+void drawRectangle(Mat &img, Rect &r,Scalar color)
+{
+	r.x += cvRound(r.width*0.1);
+	r.width = cvRound(r.width*0.8);
+	r.y += cvRound(r.height*0.07);
+	r.height = cvRound(r.height*0.8);
+	rectangle(img, r.tl(), r.br(), color, 3);
+	
+	};
+	
+typedef std::pair<cv::Rect, int> Object;
+
+int main(int argc, char** argv)
+{
+	
+	//	MYSQL *conn;
+	
+   // CommandLineParser parser(argc, argv, keys);
+
+	
+	cout << "argumento 1:" << argv[1] << endl;
+	cout << "argumento 2:" << argv[2] << endl;
+	
+	string cascadeFile=argv[1];
+
+	int minH=MINH;
+	int minW=MINW;
+	int maxH=MAXH;
+	int maxW=MAXW;
+	
+	Size minSize(minH,minW);
+	Size maxSize(maxH,maxW);
+	Ptr<CascadeClassifier> cascade = makePtr<CascadeClassifier>(cascadeFile);
+	Ptr<DetectionBasedTracker::IDetector> MainDetector = makePtr<CascadeDetectorAdapter>(cascade,minSize,maxSize);
+	cascade = makePtr<CascadeClassifier>(cascadeFile);
+	Ptr<DetectionBasedTracker::IDetector> TrackingDetector = makePtr<CascadeDetectorAdapter>(cascade,minSize,maxSize);
+	DetectionBasedTracker::Parameters params;
+	//cout <<  "min detection period:" << params.minDetectionPeriod << endl;
+	params.minDetectionPeriod = MINTIMEDETECT;
+	DetectionBasedTracker Detector(MainDetector, TrackingDetector, params);
+
+	
+//	MultiTracker mtracker("MEDIANFLOW");
+    namedWindow("people detector", WINDOW_NORMAL | WINDOW_KEEPRATIO);
+
+    string pattern_glob = "";
+    string video_filename = argv[2];
+    int camera_id = -1;
+
+
+    if (!pattern_glob.empty() || camera_id != -1 || !video_filename.empty())
+    {
+        //Read from input image files
+        vector<String> filenames;
+        //Read from video file
+        VideoCapture vc;
+        Mat frame;
+
+        vc.open(video_filename.c_str());
+        if (!vc.isOpened()) throw runtime_error(string("can't open video file: " + video_filename));
+        unsigned long int nFrame=0;
+        for (;;)
+        {
+		nFrame++;
+        vc >> frame;
+         if (frame.empty()) break;
+		
+		
+		//cvtColor(ReferenceFrame_BGR,ReferenceFrame,cv::COLOR_BGR2RGB);//Swaping Red and Blue colour
+		Mat grayFrame;
+		cvtColor(frame, grayFrame, COLOR_RGB2GRAY);
+		
+		Detector.process(grayFrame);
+		vector<Object> objs;
+        Detector.getObjects(objs);
+       
+       //impresion
+       cout << "frame:" << nFrame << endl;
+        for (int i = 0; i < objs.size(); i++) {
+            	
+            	cout << "objeto " << objs[i].second << ":";
+            	Rect r = objs[i].first;
+            	cout << "(" << r.x << "," << r.y << ")" << endl;
+            	// Make a rectangle around the detected object
+            	       drawRectangle(frame,r,Scalar(0,255,0));
+			}
+       
+
+            imshow("people detector", frame);
+            int c = waitKey( vc.isOpened() ? 30 : 0 ) & 255;
+            if ( c == 'q' || c == 'Q' || c == 27)
+                break;
+        }
+    }
+	cout << "saliendo" << endl;
+    return 0;
+}
