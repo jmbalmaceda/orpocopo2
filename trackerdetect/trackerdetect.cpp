@@ -35,6 +35,9 @@ int main(int argc, char** argv)
 	data.server = p.top()["server"];
 	data.database = p.top()["database"];
 	
+	int ROIline=stoi(p.top()["ROIline"]);
+	
+	
 	DBConnection dbconn(data);
 	
 	string fileName = argv[2];
@@ -48,7 +51,8 @@ int main(int argc, char** argv)
 	
 	//tracker persona completa
 	Size minSize2(60,90);
-	Size maxSize2(200,300);
+	
+	Size maxSize2(150,150);
 	DetectionBasedTracker Detector2 = getDetectionBasedTracker(minSize2,maxSize2,minTimeDetect,cascadeClassifierFile2);
 
 
@@ -98,10 +102,29 @@ int main(int argc, char** argv)
 		vector<Object> objs2;
         Detector2.getObjects(objs2);
         
+      // cout << "CAJAS AZULES:" << endl;
         for (int i = 0; i < objs2.size(); i++) {
   
            	Rect r = objs2[i].first;
-
+		//	cout << "(x,y):" << r.x << "," << r.y << endl;
+		//	cout << "(w,h):" << r.width << "," << r.height << endl;
+			if (intersection(r,ROIline))
+			{
+				cout << "interseccion con zona de interes" << endl;
+				//tengo que recortar y aplicar detector de mano
+				Rect roi;
+				roi.x = max(0,r.x-24);
+				roi.width = min(r.width+24,frame.size().width);
+				roi.y = max(0,r.y-24);
+				roi.height = min(r.height+60,frame.size().height);
+				
+				Mat crop = frame(roi);
+				
+				//ahora tengo que aplicar detector de mano
+				
+				imshow("crop", crop);
+				
+				};
 			//inserto en la base de datos
            	//dbconn.insertPickUpInformation(nFrame,0,objs[i].second,r.x,r.y,0);
            	//dibujo
