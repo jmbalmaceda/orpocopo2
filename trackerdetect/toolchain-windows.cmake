@@ -9,3 +9,4 @@ find_program(CMAKE_C_COMPILER NAMES ${COMPILER_PREFIX}-gcc)
 find_program(CMAKE_CXX_COMPILER NAMES ${COMPILER_PREFIX}-g++)
 #SET(CMAKE_CXX_COMPILER ${COMPILER_PREFIX}-g++)
 
+set(CMAKE_FIND_ROOT_PATH /mnt/d/opencv_build /mnt/d/mysql-mariadb)

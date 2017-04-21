@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/DBConnection.cpp
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.cpp
 DBConnection.h
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/DBConnection.h
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.h
 mysql/mysql.h
 -
 IniWriter.h
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/IniWriter.h
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/IniWriter.h
 IniReader.h
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/IniReader.h
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/IniReader.h
 stdio.h
 -
 time.h
@@ -28,7 +28,7 @@ sys/timeb.h
 cstring
 -
 
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/DBConnection.h
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.h
 mysql/mysql.h
 -
 string

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/codigo/trackerdetect
+CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/datos/Dropbox/orco/codigo/trackerdetect/build
+CMAKE_BINARY_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/iniparser.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/iniparser.dir/flags.make
 
 CMakeFiles/iniparser.dir/ini.cpp.o: CMakeFiles/iniparser.dir/flags.make
 CMakeFiles/iniparser.dir/ini.cpp.o: ../ini.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/iniparser.dir/ini.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iniparser.dir/ini.cpp.o -c /mnt/datos/Dropbox/orco/codigo/trackerdetect/ini.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/iniparser.dir/ini.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iniparser.dir/ini.cpp.o -c /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp
 
 CMakeFiles/iniparser.dir/ini.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/iniparser.dir/ini.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/datos/Dropbox/orco/codigo/trackerdetect/ini.cpp > CMakeFiles/iniparser.dir/ini.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp > CMakeFiles/iniparser.dir/ini.cpp.i
 
 CMakeFiles/iniparser.dir/ini.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/iniparser.dir/ini.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/datos/Dropbox/orco/codigo/trackerdetect/ini.cpp -o CMakeFiles/iniparser.dir/ini.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp -o CMakeFiles/iniparser.dir/ini.cpp.s
 
 CMakeFiles/iniparser.dir/ini.cpp.o.requires:
 
@@ -91,7 +91,7 @@ iniparser_EXTERNAL_OBJECTS =
 libiniparser.a: CMakeFiles/iniparser.dir/ini.cpp.o
 libiniparser.a: CMakeFiles/iniparser.dir/build.make
 libiniparser.a: CMakeFiles/iniparser.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libiniparser.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libiniparser.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/iniparser.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/iniparser.dir/link.txt --verbose=$(VERBOSE)
 
@@ -109,6 +109,6 @@ CMakeFiles/iniparser.dir/clean:
 .PHONY : CMakeFiles/iniparser.dir/clean
 
 CMakeFiles/iniparser.dir/depend:
-	cd /mnt/datos/Dropbox/orco/codigo/trackerdetect/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/datos/Dropbox/orco/codigo/trackerdetect /mnt/datos/Dropbox/orco/codigo/trackerdetect /mnt/datos/Dropbox/orco/codigo/trackerdetect/build /mnt/datos/Dropbox/orco/codigo/trackerdetect/build /mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles/iniparser.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles/iniparser.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/iniparser.dir/depend
 

@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/codigo/trackerdetect
+CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/datos/Dropbox/orco/codigo/trackerdetect/build
+CMAKE_BINARY_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/trackerdetect.dir
@@ -68,7 +68,7 @@ CMakeFiles/trackerdetect.dir/all: CMakeFiles/tracker.dir/all
 CMakeFiles/trackerdetect.dir/all: CMakeFiles/dbconn.dir/all
 	$(MAKE) -f CMakeFiles/trackerdetect.dir/build.make CMakeFiles/trackerdetect.dir/depend
 	$(MAKE) -f CMakeFiles/trackerdetect.dir/build.make CMakeFiles/trackerdetect.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles --progress-num=9,10 "Built target trackerdetect"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles --progress-num=9,10 "Built target trackerdetect"
 .PHONY : CMakeFiles/trackerdetect.dir/all
 
 # Include target in all.
@@ -78,9 +78,9 @@ all: CMakeFiles/trackerdetect.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/trackerdetect.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/trackerdetect.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles 0
 .PHONY : CMakeFiles/trackerdetect.dir/rule
 
 # Convenience name for target.
@@ -105,7 +105,7 @@ clean: CMakeFiles/trackerdetect.dir/clean
 CMakeFiles/rutines.dir/all:
 	$(MAKE) -f CMakeFiles/rutines.dir/build.make CMakeFiles/rutines.dir/depend
 	$(MAKE) -f CMakeFiles/rutines.dir/build.make CMakeFiles/rutines.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles --progress-num=5,6 "Built target rutines"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles --progress-num=5,6 "Built target rutines"
 .PHONY : CMakeFiles/rutines.dir/all
 
 # Include target in all.
@@ -115,9 +115,9 @@ all: CMakeFiles/rutines.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rutines.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rutines.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles 0
 .PHONY : CMakeFiles/rutines.dir/rule
 
 # Convenience name for target.
@@ -142,7 +142,7 @@ clean: CMakeFiles/rutines.dir/clean
 CMakeFiles/tracker.dir/all:
 	$(MAKE) -f CMakeFiles/tracker.dir/build.make CMakeFiles/tracker.dir/depend
 	$(MAKE) -f CMakeFiles/tracker.dir/build.make CMakeFiles/tracker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles --progress-num=7,8 "Built target tracker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles --progress-num=7,8 "Built target tracker"
 .PHONY : CMakeFiles/tracker.dir/all
 
 # Include target in all.
@@ -152,9 +152,9 @@ all: CMakeFiles/tracker.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tracker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tracker.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles 0
 .PHONY : CMakeFiles/tracker.dir/rule
 
 # Convenience name for target.
@@ -179,7 +179,7 @@ clean: CMakeFiles/tracker.dir/clean
 CMakeFiles/iniparser.dir/all:
 	$(MAKE) -f CMakeFiles/iniparser.dir/build.make CMakeFiles/iniparser.dir/depend
 	$(MAKE) -f CMakeFiles/iniparser.dir/build.make CMakeFiles/iniparser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles --progress-num=3,4 "Built target iniparser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles --progress-num=3,4 "Built target iniparser"
 .PHONY : CMakeFiles/iniparser.dir/all
 
 # Include target in all.
@@ -189,9 +189,9 @@ all: CMakeFiles/iniparser.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/iniparser.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/iniparser.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles 0
 .PHONY : CMakeFiles/iniparser.dir/rule
 
 # Convenience name for target.
@@ -216,7 +216,7 @@ clean: CMakeFiles/iniparser.dir/clean
 CMakeFiles/dbconn.dir/all:
 	$(MAKE) -f CMakeFiles/dbconn.dir/build.make CMakeFiles/dbconn.dir/depend
 	$(MAKE) -f CMakeFiles/dbconn.dir/build.make CMakeFiles/dbconn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles --progress-num=1,2 "Built target dbconn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles --progress-num=1,2 "Built target dbconn"
 .PHONY : CMakeFiles/dbconn.dir/all
 
 # Include target in all.
@@ -226,9 +226,9 @@ all: CMakeFiles/dbconn.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/dbconn.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/dbconn.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles 0
 .PHONY : CMakeFiles/dbconn.dir/rule
 
 # Convenience name for target.

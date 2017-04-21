@@ -1,7 +1,7 @@
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles/edit_cache.dir
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles/rebuild_cache.dir
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles/trackerdetect.dir
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles/rutines.dir
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles/tracker.dir
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles/iniparser.dir
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles/dbconn.dir
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles/edit_cache.dir
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles/rebuild_cache.dir
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles/trackerdetect.dir
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles/rutines.dir
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles/tracker.dir
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles/iniparser.dir
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles/dbconn.dir

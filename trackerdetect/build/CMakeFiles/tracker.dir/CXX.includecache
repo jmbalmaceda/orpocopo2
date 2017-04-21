@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/tracker.cpp
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/tracker.cpp
 tracker.h
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/tracker.h
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/tracker.h
 opencv2/objdetect.hpp
 -
 opencv2/highgui.hpp
@@ -20,7 +20,7 @@ opencv2/videoio.hpp
 opencv2/objdetect/detection_based_tracker.hpp
 -
 
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/tracker.h
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/tracker.h
 opencv2/objdetect.hpp
 -
 opencv2/highgui.hpp

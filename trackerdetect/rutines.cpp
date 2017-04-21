@@ -37,3 +37,9 @@ INI::Parser readIni(string fileName)
 
   return p;
 }
+
+bool intersection(Rect &r, int yline)
+{
+	
+	return (yline >= r.y) && (yline <= r.y+r.height);
+	};

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/mnt/datos/Dropbox/orco/codigo/trackerdetect/tracker.cpp" "/mnt/datos/Dropbox/orco/codigo/trackerdetect/build/CMakeFiles/tracker.dir/tracker.cpp.o"
+  "/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/tracker.cpp" "/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build/CMakeFiles/tracker.dir/tracker.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

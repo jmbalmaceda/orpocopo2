@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/ini.cpp
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp
 cassert
 -
 map
@@ -26,7 +26,7 @@ fstream
 sstream
 -
 
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/rutines.cpp
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/rutines.cpp
 opencv2/highgui.hpp
 -
 opencv2/video.hpp
@@ -34,5 +34,5 @@ opencv2/video.hpp
 opencv2/videoio.hpp
 -
 ini.cpp
-/mnt/datos/Dropbox/orco/codigo/trackerdetect/ini.cpp
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp
 
