@@ -43,3 +43,30 @@ bool intersection(Rect &r, int yline)
 	
 	return (yline >= r.y) && (yline <= r.y+r.height);
 	};
+
+bool isGrayImage( Mat img ) // returns true if the given 3 channel image is B = G = R
+{
+    Mat dst;
+    Mat bgr[3];
+    split( img, bgr );
+    absdiff( bgr[0], bgr[1], dst );
+
+    if(countNonZero( dst ))
+        return false;
+
+    absdiff( bgr[0], bgr[2], dst );
+    return !countNonZero( dst );
+}
+
+bool movement(Mat imgprev, Mat img)
+{
+	
+	Mat motion;
+
+	absdiff(imgprev, img, motion);
+	threshold(motion, motion, 40, 255, cv::THRESH_BINARY);
+	//erode(motion, motion, cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3,3)));
+	
+	imshow("movement", motion);
+	return !isGrayImage(motion);
+	};

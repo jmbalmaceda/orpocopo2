@@ -28,6 +28,7 @@ int main(int argc, char** argv)
 	int minTimeDetect=stoi(p.top()["minTimeDetect"]);
 	string cascadeClassifierFile=p.top()["cascadeClassifierFile"];
 	string cascadeClassifierFile2=p.top()["cascadeClassifierFile2"];
+	string cascadeClassifierFileMano=p.top()["cascadeClassifierFileMano"];
 	
 	ConnectionData data;
 	data.user = p.top()["user"];
@@ -50,12 +51,15 @@ int main(int argc, char** argv)
 	DetectionBasedTracker Detector = getDetectionBasedTracker(minSize,maxSize,minTimeDetect,cascadeClassifierFile);
 	
 	//tracker persona completa
-	Size minSize2(60,90);
-	
+	Size minSize2(60,90);	
 	Size maxSize2(150,150);
 	DetectionBasedTracker Detector2 = getDetectionBasedTracker(minSize2,maxSize2,minTimeDetect,cascadeClassifierFile2);
 
 
+	Size minSizeMano(24,24);	
+	Size maxSizeMano(70,70);
+	DetectionBasedTracker DetectorMano = getDetectionBasedTracker(minSizeMano,maxSizeMano,minTimeDetect,cascadeClassifierFileMano);
+	
 //	MultiTracker mtracker("MEDIANFLOW");
     namedWindow("people detector", WINDOW_NORMAL | WINDOW_KEEPRATIO);
     
@@ -64,14 +68,17 @@ int main(int argc, char** argv)
     //Read from video file
     VideoCapture vc;
     Mat frame;
-    
+    Mat framePrevC;
+    Mat frameC;
     vc.open(video_filename.c_str());
     if (!vc.isOpened()) throw runtime_error(string("can't open video file: " + video_filename));
     unsigned long int nFrame=0;
     for (;;)
     {
 		nFrame++;
+		framePrevC=frameC.clone();
 		vc >> frame;
+		frameC=frame.clone();
 		if (frame.empty()) break;
 		
 		Mat grayFrame;
@@ -102,6 +109,10 @@ int main(int argc, char** argv)
 		vector<Object> objs2;
         Detector2.getObjects(objs2);
         
+        DetectorMano.process(grayFrame);
+        vector<Object> manos;
+        DetectorMano.getObjects(manos);
+        
       // cout << "CAJAS AZULES:" << endl;
         for (int i = 0; i < objs2.size(); i++) {
   
@@ -116,11 +127,25 @@ int main(int argc, char** argv)
 				roi.x = max(0,r.x-24);
 				roi.width = min(r.width+24,frame.size().width);
 				roi.y = max(0,r.y-24);
-				roi.height = min(r.height+60,frame.size().height);
+				roi.height = min(r.height+80,frame.size().height);
 				
-				Mat crop = frame(roi);
-				
+				Mat crop = frameC(roi);
+				Mat cropprev = framePrevC(roi);
+				if (movement(crop,cropprev))
+				{
+					cout << "cacona" << endl;
+					};
 				//ahora tengo que aplicar detector de mano
+				//si alguna mano esta intersecada con la roi actual, dibujo el rectangulo
+				
+				for (int m=0;m < manos.size();m++)
+				{
+						Rect mano = manos[i].first;
+						if ((mano & roi).area()>0)
+						{
+							drawRectangle(frame,mano,Scalar(0,0,255));
+							};
+					};
 				
 				imshow("crop", crop);
 				
