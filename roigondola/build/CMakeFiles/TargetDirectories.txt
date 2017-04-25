@@ -1,0 +1,3 @@
+/mnt/datos/Dropbox/orco/orpocopo2/roigondola/build/CMakeFiles/rebuild_cache.dir
+/mnt/datos/Dropbox/orco/orpocopo2/roigondola/build/CMakeFiles/edit_cache.dir
+/mnt/datos/Dropbox/orco/orpocopo2/roigondola/build/CMakeFiles/roigondola.dir

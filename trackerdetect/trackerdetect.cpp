@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 {
 
 	//Leer configuracion
-	INI::Parser p = readIni("conf.ini");
+	INI::Parser p = readIni("conf2.ini");
    
 	int minH=stoi(p.top()["minH"]);
 	int minW=stoi(p.top()["minW"]);
@@ -37,6 +37,9 @@ int main(int argc, char** argv)
 	data.database = p.top()["database"];
 	
 	int ROIline=stoi(p.top()["ROIline"]);
+	string linea1Gondola=p.top()["linea1"];
+	string linea2Gondola=p.top()["linea2"];
+	
 	
 	
 	DBConnection dbconn(data);
@@ -51,8 +54,8 @@ int main(int argc, char** argv)
 	DetectionBasedTracker Detector = getDetectionBasedTracker(minSize,maxSize,minTimeDetect,cascadeClassifierFile);
 	
 	//tracker persona completa
-	Size minSize2(60,90);	
-	Size maxSize2(150,150);
+	Size minSize2(120,120);	
+	Size maxSize2(300,300);
 	DetectionBasedTracker Detector2 = getDetectionBasedTracker(minSize2,maxSize2,minTimeDetect,cascadeClassifierFile2);
 
 
@@ -149,11 +152,12 @@ int main(int argc, char** argv)
 				
 				imshow("crop", crop);
 				
+				drawRectangle(frame,r,Scalar(255,0,0));
 				};
 			//inserto en la base de datos
            	//dbconn.insertPickUpInformation(nFrame,0,objs[i].second,r.x,r.y,0);
            	//dibujo
-           	drawRectangle(frame,r,Scalar(255,0,0));
+           	
 		}
         
 		imshow("people detector", frame);

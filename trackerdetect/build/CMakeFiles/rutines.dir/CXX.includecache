@@ -33,6 +33,8 @@ opencv2/video.hpp
 -
 opencv2/videoio.hpp
 -
+opencv2/imgproc.hpp
+-
 ini.cpp
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp
 

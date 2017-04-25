@@ -25,7 +25,7 @@ CascadeDetectorAdapter::CascadeDetectorAdapter(cv::Ptr<cv::CascadeClassifier> de
 void CascadeDetectorAdapter::detect(const cv::Mat &Image, std::vector<cv::Rect> &objects)
 {
     // Detector->detectMultiScale(Image, objects, scaleFactor, minNeighbours, 0, minObjSize, maxObjSize);
-	Detector->detectMultiScale(Image, objects, scaleFactor, 20, 0,  minSize, maxSize);
+	Detector->detectMultiScale(Image, objects, scaleFactor, 10, 0,  minSize, maxSize);
    }
 
 

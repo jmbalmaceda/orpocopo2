@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8)
+project( roigondola )
+set(CMAKE_CXX_STANDARD 11)
+find_package( OpenCV REQUIRED )
+add_executable( roigondola roigondola.cpp )
+target_link_libraries( roigondola  ${OpenCV_LIBS} )
