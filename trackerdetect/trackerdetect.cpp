@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 {
 
 	//Leer configuracion
-	INI::Parser p = readIni("conf2.ini");
+	INI::Parser p = readIni("conf.ini");
    
 	int minH=stoi(p.top()["minH"]);
 	int minW=stoi(p.top()["minW"]);
@@ -37,10 +37,11 @@ int main(int argc, char** argv)
 	data.database = p.top()["database"];
 	
 	int ROIline=stoi(p.top()["ROIline"]);
-	string linea1Gondola=p.top()["linea1"];
-	string linea2Gondola=p.top()["linea2"];
+	string slinea1Gondola=p.top()["linea1"];
+	string slinea2Gondola=p.top()["linea2"];
 	
-	
+	Line Linea1Gondola = str2line(slinea1Gondola);
+	Line Linea2Gondola = str2line(slinea2Gondola);
 	
 	DBConnection dbconn(data);
 	
@@ -55,12 +56,12 @@ int main(int argc, char** argv)
 	
 	//tracker persona completa
 	Size minSize2(120,120);	
-	Size maxSize2(300,300);
-	DetectionBasedTracker Detector2 = getDetectionBasedTracker(minSize2,maxSize2,minTimeDetect,cascadeClassifierFile2);
+	Size maxSize2(200,200);
+	DetectionBasedTracker DetectorPersona = getDetectionBasedTracker(minSize2,maxSize2,minTimeDetect,cascadeClassifierFile2);
 
 
-	Size minSizeMano(24,24);	
-	Size maxSizeMano(70,70);
+	Size minSizeMano(40,40);	
+	Size maxSizeMano(80,80);
 	DetectionBasedTracker DetectorMano = getDetectionBasedTracker(minSizeMano,maxSizeMano,minTimeDetect,cascadeClassifierFileMano);
 	
 //	MultiTracker mtracker("MEDIANFLOW");
@@ -81,6 +82,22 @@ int main(int argc, char** argv)
 		nFrame++;
 		framePrevC=frameC.clone();
 		vc >> frame;
+	
+		/*
+		Point* pts = new Point[4];
+		
+		//Point p1,p2,p3,p4;
+		pts[0].x=100;
+		pts[0].y=100;
+		pts[1].x=200;
+		pts[1].y=200;
+		pts[2].x=100;
+		pts[2].y=400;
+		pts[3].x=120;
+		pts[3].y=100;
+		
+		fillConvexPoly(frame, pts, 4, Scalar(0,0,255),16,0);
+				*/
 		frameC=frame.clone();
 		if (frame.empty()) break;
 		
@@ -107,33 +124,51 @@ int main(int argc, char** argv)
        
               
                	
-		Detector2.process(grayFrame);
+		DetectorPersona.process(grayFrame);
 	
-		vector<Object> objs2;
-        Detector2.getObjects(objs2);
+		vector<Object> objsPersona;
+        DetectorPersona.getObjects(objsPersona);
         
         DetectorMano.process(grayFrame);
         vector<Object> manos;
         DetectorMano.getObjects(manos);
         
       // cout << "CAJAS AZULES:" << endl;
-        for (int i = 0; i < objs2.size(); i++) {
+        for (int i = 0; i < objsPersona.size(); i++) {
   
-           	Rect r = objs2[i].first;
+           	Rect r = objsPersona[i].first;
 		//	cout << "(x,y):" << r.x << "," << r.y << endl;
 		//	cout << "(w,h):" << r.width << "," << r.height << endl;
 			if (intersection(r,ROIline))
 			{
 				cout << "interseccion con zona de interes" << endl;
 				//tengo que recortar y aplicar detector de mano
+			
 				Rect roi;
 				roi.x = max(0,r.x-24);
 				roi.width = min(r.width+24,frame.size().width);
 				roi.y = max(0,r.y-24);
 				roi.height = min(r.height+80,frame.size().height);
 				
+				
 				Mat crop = frameC(roi);
 				Mat cropprev = framePrevC(roi);
+				// esta ROI la interseco con la gondola
+				Point* poligono = getPolygon(roi,Linea1Gondola,Linea2Gondola);
+				
+				Size s = frame.size();
+				Mat mask(s, CV_8UC1);
+				mask = Scalar(0,0,0);
+				fillConvexPoly(mask, poligono, 4, Scalar(255,255,255));
+				
+				
+				Mat frameMasked(s,CV_8UC3);
+				frameMasked = Scalar(0,0,0);
+				//cvCopy(frameC,frameM,mask);
+
+				frameC.copyTo(frameMasked, mask);
+				
+				imshow("mask",frameMasked);
 				if (movement(crop,cropprev))
 				{
 					cout << "cacona" << endl;

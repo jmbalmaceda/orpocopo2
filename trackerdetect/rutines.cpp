@@ -3,26 +3,17 @@
 #include <opencv2/videoio.hpp>
 #include <opencv2/imgproc.hpp>
 #include "ini.cpp"
-
+#include "rutines.h"
 
 using namespace cv;
 using namespace std;
 
-class Line
+
+Line::Line(Point p1, Point p2)
 {
-	public:
-		Line(Point p1, Point p2)
-		{
-				point1=p1;
-				point2=p2;
-			};
-		
-		Point getP1();
-		Point getP2();
-	private:
-		Point point1;
-		Point point2;
-	};
+	point1=p1;
+	point2=p2;
+};
 	
 Point Line::getP1()
 {
@@ -74,8 +65,8 @@ bool intersectionLines(Line l1, Line l2,
                       Point2f &r)
 {
 	Point2f o1 = l1.getP1();
-	Point2f o2 = l1.getP2();
-	Point2f p1 = l2.getP1();
+	Point2f o2 = l2.getP1();
+	Point2f p1 = l1.getP2();
 	Point2f p2 = l2.getP2();
 	
     Point2f x = o2 - o1;
@@ -118,12 +109,33 @@ bool movement(Mat imgprev, Mat img)
 	return !isGrayImage(motion);
 	};
 
-Point str2point(string s)
+Line str2line(string s)
 {
-	int pos = s.find(".");
+	int posPunto = s.find(".");
 	
-	 string sp1 = s.substr (0,pos);
-	   
+	 string sp1 = s.substr (0,posPunto);
+	 string sp2 = s.substr (posPunto+1,s.length());
+	 
+	 Point p1;
+	 int pos = sp1.find(",");
+	 string sint = sp1.substr(1,pos-1);
+	 p1.x = stoi(sint);
+	 
+	 sint = sp1.substr(pos+1,posPunto-(1+pos+1));
+	 p1.y = stoi(sint);
+	  
+	
+	 
+	 Point p2;
+	 pos = sp2.find(",");
+	 sint = sp2.substr(1,pos-1);
+	 p2.x = stoi(sint);
+	 
+	 sint = sp2.substr(pos+1,sp2.length()-1);
+	 p2.y = stoi(sint);
+	 
+	 Line l(p1,p2);
+	 return l; 
 	};
 
 
@@ -133,25 +145,36 @@ Point* getPolygon(Rect r, Line l1, Line l2)
 	
 	
 	//construyo las lineas verticales desde el rectanculo r
+	cout << "puntos del rectangulo:" << endl;
 	Point2f lr1p1;
 	lr1p1.x=r.x;
 	lr1p1.y=r.y;
+	
+	cout << lr1p1 << endl;
 	
 	Point2f lr1p2;
 	lr1p2.x=r.x;
 	lr1p2.y=r.y+r.height;
 	
-	Line lr1(lr1p1,lr1p1);
+	Line lr1(lr1p1,lr1p2);
+	
+	cout << lr1p2 << endl;
 	
 	Point2f lr2p1;
 	lr2p1.x=r.x+r.width;
 	lr2p1.y=r.y;
 	
+	cout << lr2p1 << endl;
+	
 	Point2f lr2p2;
 	lr2p2.x=r.x+r.width;
 	lr2p2.y=r.y+r.height;
 	
-	Line lr2(lr2p2,lr2p2);
+	cout << lr2p2 << endl;
+	
+	
+	Line lr2(lr2p1,lr2p2);
+	
 	
 	//obtengo los cuatro puntos del poligono
 	
@@ -159,16 +182,20 @@ Point* getPolygon(Rect r, Line l1, Line l2)
 	
 	intersectionLines(lr1,l1,p1);
 	intersectionLines(lr1,l2,p2);
-	intersectionLines(lr2,l1,p3);
-	intersectionLines(lr2,l2,p4);
+	intersectionLines(lr2,l2,p3);
+	intersectionLines(lr2,l1,p4);
 	
 	vec[0]=p1;
 	vec[1]=p2;
 	vec[2]=p3;
 	vec[3]=p4;
 	
+	cout << "punto1:" << vec[0] << endl;
+	cout << "punto2:" << vec[1] << endl;	
+	cout << "punto3:" << vec[2] << endl;	
+	cout << "punto4:" << vec[3] << endl;
 	return vec;
-	};
+};
 	
 
 

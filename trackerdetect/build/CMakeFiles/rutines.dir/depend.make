@@ -3,4 +3,5 @@
 
 CMakeFiles/rutines.dir/rutines.cpp.o: ../ini.cpp
 CMakeFiles/rutines.dir/rutines.cpp.o: ../rutines.cpp
+CMakeFiles/rutines.dir/rutines.cpp.o: ../rutines.h
 
