@@ -96,16 +96,15 @@ bool isGrayImage( Mat img ) // returns true if the given 3 channel image is B = 
     return !countNonZero( dst );
 }
 
-bool movement(Mat imgprev, Mat img)
+bool movementFrame(Mat imgprev, Mat img)
 {
 	
 	Mat motion;
 
 	absdiff(imgprev, img, motion);
 	threshold(motion, motion, 40, 255, cv::THRESH_BINARY);
-	//erode(motion, motion, cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3,3)));
-	
-	imshow("movement", motion);
+	erode(motion, motion, cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3,3)));
+	//if (!isGrayImage(motion)) imshow("mov",motion);
 	return !isGrayImage(motion);
 	};
 
@@ -139,18 +138,18 @@ Line str2line(string s)
 	};
 
 
-Point* getPolygon(Rect r, Line l1, Line l2)
+vector<Point> getPolygon(Rect r, Line l1, Line l2)
 {
-	Point* vec = new Point[4];
+	vector<Point> vec;
 	
 	
 	//construyo las lineas verticales desde el rectanculo r
-	cout << "puntos del rectangulo:" << endl;
+//	cout << "puntos del rectangulo:" << endl;
 	Point2f lr1p1;
 	lr1p1.x=r.x;
 	lr1p1.y=r.y;
 	
-	cout << lr1p1 << endl;
+//	cout << lr1p1 << endl;
 	
 	Point2f lr1p2;
 	lr1p2.x=r.x;
@@ -158,19 +157,19 @@ Point* getPolygon(Rect r, Line l1, Line l2)
 	
 	Line lr1(lr1p1,lr1p2);
 	
-	cout << lr1p2 << endl;
+//	cout << lr1p2 << endl;
 	
 	Point2f lr2p1;
 	lr2p1.x=r.x+r.width;
 	lr2p1.y=r.y;
 	
-	cout << lr2p1 << endl;
+//	cout << lr2p1 << endl;
 	
 	Point2f lr2p2;
 	lr2p2.x=r.x+r.width;
 	lr2p2.y=r.y+r.height;
 	
-	cout << lr2p2 << endl;
+//	cout << lr2p2 << endl;
 	
 	
 	Line lr2(lr2p1,lr2p2);
@@ -185,15 +184,11 @@ Point* getPolygon(Rect r, Line l1, Line l2)
 	intersectionLines(lr2,l2,p3);
 	intersectionLines(lr2,l1,p4);
 	
-	vec[0]=p1;
-	vec[1]=p2;
-	vec[2]=p3;
-	vec[3]=p4;
+	vec.push_back(p1);
+	vec.push_back(p2);
+	vec.push_back(p3);
+	vec.push_back(p4);
 	
-	cout << "punto1:" << vec[0] << endl;
-	cout << "punto2:" << vec[1] << endl;	
-	cout << "punto3:" << vec[2] << endl;	
-	cout << "punto4:" << vec[3] << endl;
 	return vec;
 };
 	

@@ -24,11 +24,11 @@ bool intersection(Rect &r, int yline);
 INI::Parser readIni(string fileName);
 
 bool isGrayImage( Mat img );
-bool movement(Mat imgprev, Mat img);
+bool movementFrame(Mat imgprev, Mat img);
 
 Line str2line(string s);
 
-Point* getPolygon(Rect r, Line l1, Line l2);
+vector<Point> getPolygon(Rect r, Line l1, Line l2);
 
 	
 bool intersectionLines(Line l1, Line l2,

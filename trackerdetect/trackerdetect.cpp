@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 #include <opencv2/highgui.hpp>
 #include <opencv2/video.hpp>
@@ -11,6 +12,7 @@
 #include "ini.cpp"
 #include "rutines.h"
 #include "tracker.h"
+#include "detect_movement.h"
 
 using namespace cv;
 using namespace std;
@@ -40,6 +42,8 @@ int main(int argc, char** argv)
 	string slinea1Gondola=p.top()["linea1"];
 	string slinea2Gondola=p.top()["linea2"];
 	
+	
+	//calculo la ROI de la gondola para el frame entero
 	Line Linea1Gondola = str2line(slinea1Gondola);
 	Line Linea2Gondola = str2line(slinea2Gondola);
 	
@@ -62,7 +66,7 @@ int main(int argc, char** argv)
 
 	Size minSizeMano(40,40);	
 	Size maxSizeMano(80,80);
-	DetectionBasedTracker DetectorMano = getDetectionBasedTracker(minSizeMano,maxSizeMano,minTimeDetect,cascadeClassifierFileMano);
+	DetectionBasedTracker DetectorMano = getDetectionBasedTracker(minSizeMano,maxSizeMano,0,cascadeClassifierFileMano);
 	
 //	MultiTracker mtracker("MEDIANFLOW");
     namedWindow("people detector", WINDOW_NORMAL | WINDOW_KEEPRATIO);
@@ -77,6 +81,22 @@ int main(int argc, char** argv)
     vc.open(video_filename.c_str());
     if (!vc.isOpened()) throw runtime_error(string("can't open video file: " + video_filename));
     unsigned long int nFrame=0;
+    
+    
+    //extraigo dimensiones
+    vc >> frame;
+    Size s = frame.size();
+    
+    Rect roiFrame;
+    roiFrame.x=0;
+    roiFrame.y=0;
+    roiFrame.width = s.width;
+    roiFrame.height = s.height;
+    
+	vector<Point> vecpoli = getPolygon(roiFrame,Linea1Gondola,Linea2Gondola);
+	
+	DetectMovementInPolygon dmpoly(frame,vecpoli);
+    
     for (;;)
     {
 		nFrame++;
@@ -112,9 +132,9 @@ int main(int argc, char** argv)
             
 		cout << "frame:" << nFrame << endl;
         for (int i = 0; i < objs.size(); i++) {
-            	cout << "objeto " << objs[i].second << ":";
+            //	cout << "objeto " << objs[i].second << ":";
             	Rect r = objs[i].first;
-            	cout << "(" << r.x << "," << r.y << ")" << endl;
+            	//cout << "(" << r.x << "," << r.y << ")" << endl;
 				//inserto en la base de datos
             	//dbconn.insertPickUpInformation(nFrame,0,objs[i].second,r.x,r.y,0);
             	//dibujo
@@ -141,37 +161,23 @@ int main(int argc, char** argv)
 		//	cout << "(w,h):" << r.width << "," << r.height << endl;
 			if (intersection(r,ROIline))
 			{
-				cout << "interseccion con zona de interes" << endl;
+			//	cout << "interseccion con zona de interes" << endl;
 				//tengo que recortar y aplicar detector de mano
 			
 				Rect roi;
+
 				roi.x = max(0,r.x-24);
 				roi.width = min(r.width+24,frame.size().width);
+				if (roi.width+roi.x > s.width) roi.width = s.width-roi.x;
 				roi.y = max(0,r.y-24);
 				roi.height = min(r.height+80,frame.size().height);
-				
-				
-				Mat crop = frameC(roi);
-				Mat cropprev = framePrevC(roi);
-				// esta ROI la interseco con la gondola
-				Point* poligono = getPolygon(roi,Linea1Gondola,Linea2Gondola);
-				
-				Size s = frame.size();
-				Mat mask(s, CV_8UC1);
-				mask = Scalar(0,0,0);
-				fillConvexPoly(mask, poligono, 4, Scalar(255,255,255));
-				
-				
-				Mat frameMasked(s,CV_8UC3);
-				frameMasked = Scalar(0,0,0);
-				//cvCopy(frameC,frameM,mask);
-
-				frameC.copyTo(frameMasked, mask);
-				
-				imshow("mask",frameMasked);
-				if (movement(crop,cropprev))
+				if (roi.height+roi.y > s.height) roi.height = s.height-roi.y;
+				//cout << "ROI:" << roi << endl;
+				vector<Point> vecpoli = getPolygon(roi,Linea1Gondola,Linea2Gondola);
+			
+				if (dmpoly.movement(frameC,roi,nFrame))
 				{
-					cout << "cacona" << endl;
+					cout << "MANO en GONDOLA" << endl;
 					};
 				//ahora tengo que aplicar detector de mano
 				//si alguna mano esta intersecada con la roi actual, dibujo el rectangulo
@@ -185,7 +191,7 @@ int main(int argc, char** argv)
 							};
 					};
 				
-				imshow("crop", crop);
+				//imshow("crop", crop);
 				
 				drawRectangle(frame,r,Scalar(255,0,0));
 				};

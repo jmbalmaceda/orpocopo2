@@ -93,6 +93,7 @@ trackerdetect: CMakeFiles/trackerdetect.dir/build.make
 trackerdetect: libdbconn.a
 trackerdetect: librutines.a
 trackerdetect: libtracker.a
+trackerdetect: libdetect_mov.a
 trackerdetect: /usr/local/lib/libopencv_stitching.so.3.2.0
 trackerdetect: /usr/local/lib/libopencv_superres.so.3.2.0
 trackerdetect: /usr/local/lib/libopencv_videostab.so.3.2.0

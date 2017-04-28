@@ -12,6 +12,12 @@ mysql/mysql.h
 string
 -
 
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/detect_movement.h
+vector
+-
+opencv2/imgproc.hpp
+-
+
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp
 cassert
 -
@@ -57,6 +63,8 @@ fstream
 -
 string
 -
+vector
+-
 opencv2/highgui.hpp
 -
 opencv2/video.hpp
@@ -71,6 +79,8 @@ rutines.h
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/rutines.h
 tracker.h
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/tracker.h
+detect_movement.h
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/detect_movement.h
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h

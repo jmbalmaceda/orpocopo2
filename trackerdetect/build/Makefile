@@ -124,6 +124,19 @@ trackerdetect/fast:
 .PHONY : trackerdetect/fast
 
 #=============================================================================
+# Target rules for targets named detect_mov
+
+# Build rule for target.
+detect_mov: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 detect_mov
+.PHONY : detect_mov
+
+# fast build rule for target.
+detect_mov/fast:
+	$(MAKE) -f CMakeFiles/detect_mov.dir/build.make CMakeFiles/detect_mov.dir/build
+.PHONY : detect_mov/fast
+
+#=============================================================================
 # Target rules for targets named rutines
 
 # Build rule for target.
@@ -201,6 +214,33 @@ DBConnection.s: DBConnection.cpp.s
 DBConnection.cpp.s:
 	$(MAKE) -f CMakeFiles/dbconn.dir/build.make CMakeFiles/dbconn.dir/DBConnection.cpp.s
 .PHONY : DBConnection.cpp.s
+
+detect_movement.o: detect_movement.cpp.o
+
+.PHONY : detect_movement.o
+
+# target to build an object file
+detect_movement.cpp.o:
+	$(MAKE) -f CMakeFiles/detect_mov.dir/build.make CMakeFiles/detect_mov.dir/detect_movement.cpp.o
+.PHONY : detect_movement.cpp.o
+
+detect_movement.i: detect_movement.cpp.i
+
+.PHONY : detect_movement.i
+
+# target to preprocess a source file
+detect_movement.cpp.i:
+	$(MAKE) -f CMakeFiles/detect_mov.dir/build.make CMakeFiles/detect_mov.dir/detect_movement.cpp.i
+.PHONY : detect_movement.cpp.i
+
+detect_movement.s: detect_movement.cpp.s
+
+.PHONY : detect_movement.s
+
+# target to generate assembly for a file
+detect_movement.cpp.s:
+	$(MAKE) -f CMakeFiles/detect_mov.dir/build.make CMakeFiles/detect_mov.dir/detect_movement.cpp.s
+.PHONY : detect_movement.cpp.s
 
 ini.o: ini.cpp.o
 
@@ -319,6 +359,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... trackerdetect"
+	@echo "... detect_mov"
 	@echo "... rutines"
 	@echo "... tracker"
 	@echo "... iniparser"
@@ -326,6 +367,9 @@ help:
 	@echo "... DBConnection.o"
 	@echo "... DBConnection.i"
 	@echo "... DBConnection.s"
+	@echo "... detect_movement.o"
+	@echo "... detect_movement.i"
+	@echo "... detect_movement.s"
 	@echo "... ini.o"
 	@echo "... ini.i"
 	@echo "... ini.s"
