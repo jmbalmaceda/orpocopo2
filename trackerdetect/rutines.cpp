@@ -25,6 +25,10 @@ Point Line::getP2()
 	};
 
 
+bool RectIn(Rect r, Size s)
+{
+	return (r.x+r.width < s.width) && (r.y+r.height < s.height);
+	};
 
 void drawRectangle(Mat &img, Rect &r,Scalar color)
 {
@@ -104,7 +108,7 @@ bool movementFrame(Mat imgprev, Mat img)
 	absdiff(imgprev, img, motion);
 	threshold(motion, motion, 40, 255, cv::THRESH_BINARY);
 	erode(motion, motion, cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3,3)));
-	//if (!isGrayImage(motion)) imshow("mov",motion);
+	if (!isGrayImage(motion)) imshow("mov",motion);
 	return !isGrayImage(motion);
 	};
 
@@ -192,7 +196,28 @@ vector<Point> getPolygon(Rect r, Line l1, Line l2)
 	return vec;
 };
 	
+bool intersection(Rect r, vector<Object> objs, Object &i)
+{
+	vector<Object>::iterator it = objs.begin();
+	bool found=false;
+	while (it!=objs.end() && !found)
+	{
+		Rect r2 = it->first;
+		found = ((r2 & r).area()>0);
+		i=*it;
+		it++;
+		};
+	return found;
+	}; 
 
-
-
+Rect ROIExtended(Rect &r,Size s)
+{
+	Rect roi;
+	roi.x = max(0,r.x-24);
+	roi.width = min(r.width+24,s.width);
+	if (roi.width+roi.x > s.width) roi.width = s.width-roi.x;
+	roi.y = max(0,r.y-24);
+	roi.height = min(r.height+80,s.height);
+	if (roi.height+roi.y > s.height) roi.height = s.height-roi.y;
+};
 

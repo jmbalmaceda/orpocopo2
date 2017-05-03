@@ -1,0 +1,2 @@
+/usr/bin/ar qc librutines.a  CMakeFiles/rutines.dir/rutines.cpp.o
+/usr/bin/ranlib librutines.a

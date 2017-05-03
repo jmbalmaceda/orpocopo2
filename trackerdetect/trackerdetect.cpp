@@ -13,6 +13,7 @@
 #include "rutines.h"
 #include "tracker.h"
 #include "detect_movement.h"
+#include "index.h"
 
 using namespace cv;
 using namespace std;
@@ -20,6 +21,9 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
+
+	
+	Index index;
 	//Leer configuracion
 	INI::Parser p = readIni("conf.ini");
    
@@ -32,6 +36,19 @@ int main(int argc, char** argv)
 	string cascadeClassifierFile2=p.top()["cascadeClassifierFile2"];
 	string cascadeClassifierFileMano=p.top()["cascadeClassifierFileMano"];
 	
+	string cascadeClassifierFileBRec=p.top()["cascadeClassifierFileBRec"];
+	string cascadeClassifierFileBVer=p.top()["cascadeClassifierFileBVer"];
+	string cascadeClassifierFileBHor=p.top()["cascadeClassifierFileBHor"];
+	
+	CascadeClassifier detectorBrazoVertical;
+	detectorBrazoVertical.load(cascadeClassifierFileBVer);
+		
+	CascadeClassifier detectorBrazoRectangulo;
+	detectorBrazoRectangulo.load(cascadeClassifierFileBRec);
+	
+	CascadeClassifier detectorBrazoHorizontal;
+	detectorBrazoHorizontal.load(cascadeClassifierFileBHor);
+
 	ConnectionData data;
 	data.user = p.top()["user"];
 	data.password = p.top()["password"];
@@ -61,12 +78,16 @@ int main(int argc, char** argv)
 	//tracker persona completa
 	Size minSize2(120,120);	
 	Size maxSize2(200,200);
-	DetectionBasedTracker DetectorPersona = getDetectionBasedTracker(minSize2,maxSize2,minTimeDetect,cascadeClassifierFile2);
+	DetectionBasedTracker DetectorPersona = getDetectionBasedTracker(minSize2,maxSize2,0,cascadeClassifierFile2);
 
 
 	Size minSizeMano(40,40);	
 	Size maxSizeMano(80,80);
 	DetectionBasedTracker DetectorMano = getDetectionBasedTracker(minSizeMano,maxSizeMano,0,cascadeClassifierFileMano);
+	
+	Size minSizeBVer(40,86);	
+	Size maxSizeBVer(60,100);
+	DetectionBasedTracker DetectorBVer = getDetectionBasedTracker(minSizeBVer,maxSizeBVer,0,cascadeClassifierFileBVer);
 	
 //	MultiTracker mtracker("MEDIANFLOW");
     namedWindow("people detector", WINDOW_NORMAL | WINDOW_KEEPRATIO);
@@ -96,6 +117,9 @@ int main(int argc, char** argv)
 	vector<Point> vecpoli = getPolygon(roiFrame,Linea1Gondola,Linea2Gondola);
 	
 	DetectMovementInPolygon dmpoly(frame,vecpoli);
+    
+    Rect lastBrazo;
+    lastBrazo.x=-1;
     
     for (;;)
     {
@@ -132,9 +156,20 @@ int main(int argc, char** argv)
             
 		cout << "frame:" << nFrame << endl;
         for (int i = 0; i < objs.size(); i++) {
-            //	cout << "objeto " << objs[i].second << ":";
+            	cout << "objeto " << objs[i].second << ":";
             	Rect r = objs[i].first;
-            	//cout << "(" << r.x << "," << r.y << ")" << endl;
+            	int iExt = objs[i].second;
+            	int iInt;
+            	if (!index.get(iExt,iInt))
+            	{
+					index.put(iExt);
+					iInt = index.size();
+					};
+            	
+            	cout << "interno:" << iInt << ", "  << "externo:" << iExt << endl;
+            	
+            	cout <<  "(" << r.x << "," << r.y << ")" << endl;
+				
 				//inserto en la base de datos
             	//dbconn.insertPickUpInformation(nFrame,0,objs[i].second,r.x,r.y,0);
             	//dibujo
@@ -145,7 +180,6 @@ int main(int argc, char** argv)
               
                	
 		DetectorPersona.process(grayFrame);
-	
 		vector<Object> objsPersona;
         DetectorPersona.getObjects(objsPersona);
         
@@ -157,28 +191,66 @@ int main(int argc, char** argv)
         for (int i = 0; i < objsPersona.size(); i++) {
   
            	Rect r = objsPersona[i].first;
-		//	cout << "(x,y):" << r.x << "," << r.y << endl;
-		//	cout << "(w,h):" << r.width << "," << r.height << endl;
-			if (intersection(r,ROIline))
+           	Object objr;
+			if (intersection(r,ROIline) && intersection(r,objs,objr))
 			{
 			//	cout << "interseccion con zona de interes" << endl;
 				//tengo que recortar y aplicar detector de mano
 			
 				Rect roi;
-
-				roi.x = max(0,r.x-24);
-				roi.width = min(r.width+24,frame.size().width);
-				if (roi.width+roi.x > s.width) roi.width = s.width-roi.x;
-				roi.y = max(0,r.y-24);
-				roi.height = min(r.height+80,frame.size().height);
-				if (roi.height+roi.y > s.height) roi.height = s.height-roi.y;
+				
+				roi = ROIExtended(r,s);
+				
+				//en ROI extended voy a buscar brazos verticales
+				//Mat crop = frameC(roi);
+				
+				/*
+				vector<Rect> brazos;
+				detectorBrazoVertical.detectMultiScale(frame, brazos, 1.1, 50, 0 | 1, minSizeBVer, maxSizeBVer);
+				
+				for (int m=0; m< brazos.size();m++)
+				{
+					Rect r = brazos[m];
+					if (RectIn(r,s)) drawRectangle(frame,r,Scalar(0,0,255));
+					};
+				
+				vector<Rect> brazosHor;
+				detectorBrazoHorizontal.detectMultiScale(frameC, brazosHor, 1.1, 50, 0 | 1, Size(86,40), Size(100,60));
+				
+				for (int m=0; m< brazosHor.size();m++)
+				{
+					Rect r = brazosHor[m];
+					if (RectIn(r,s)) drawRectangle(frame,r,Scalar(0,255,255));
+					};
+				*/
+				
+				vector<Rect> brazosRec;
+				detectorBrazoRectangulo.detectMultiScale(frame, brazosRec, 1.1, 30, 0 | 1, Size(40,40), Size(70,70));
+				
+				for (int m=0; m< brazosRec.size();m++)
+				{
+					Rect brazo = brazosRec[m];
+					if (intersection(brazo,320))
+					{
+						drawRectangle(frame,brazo,Scalar(0,255,255));
+						lastBrazo = brazo;
+						};
+					 
+					};
+					
+					
 				//cout << "ROI:" << roi << endl;
 				vector<Point> vecpoli = getPolygon(roi,Linea1Gondola,Linea2Gondola);
 			
 				if (dmpoly.movement(frameC,roi,nFrame))
 				{
 					cout << "MANO en GONDOLA" << endl;
+					if (lastBrazo.x!=-1)
+					{
+						cout << lastBrazo << endl;
+						};
 					};
+					
 				//ahora tengo que aplicar detector de mano
 				//si alguna mano esta intersecada con la roi actual, dibujo el rectangulo
 				

@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.cpp
+DBConnection.h
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.h
+mysql/mysql.h
+-
+IniWriter.h
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/IniWriter.h
+IniReader.h
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/IniReader.h
+stdio.h
+-
+time.h
+-
+iostream
+-
+cstdlib
+-
+sys/timeb.h
+-
+cstring
+-
+
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.h
+mysql/mysql.h
+-
+string
+-
+

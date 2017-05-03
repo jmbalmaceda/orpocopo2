@@ -2,6 +2,8 @@
 #include "ini.cpp"
 #include <opencv2/imgproc.hpp>
 
+typedef std::pair<cv::Rect, int> Object;
+
 using namespace cv;
 using namespace std;
 
@@ -34,3 +36,8 @@ vector<Point> getPolygon(Rect r, Line l1, Line l2);
 bool intersectionLines(Line l1, Line l2,
                       Point2f &r);
 
+bool intersection(Rect r, vector<Object> objs,  Object &i);
+
+Rect ROIExtended(Rect &r, Size s);
+
+bool RectIn(Rect r, Size s);

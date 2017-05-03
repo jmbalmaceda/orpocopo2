@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdetect_mov.a  CMakeFiles/detect_mov.dir/detect_movement.cpp.o
+/usr/bin/ranlib libdetect_mov.a

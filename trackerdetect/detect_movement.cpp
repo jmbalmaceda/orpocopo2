@@ -12,6 +12,7 @@ using namespace cv;
 bool DetectMovementInPolygon::movement(Mat frame,Rect roi, int nFrame)
 {
 	Mat frameMasked= appyMask(frame);
+	//imshow("appymask",frameMasked);
 	bool cond=false;
 	if (nFramePrev==nFrame-1)
 	{
