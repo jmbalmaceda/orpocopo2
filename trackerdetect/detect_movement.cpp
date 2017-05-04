@@ -9,27 +9,22 @@
 using namespace std;
 using namespace cv;
 
-bool DetectMovementInPolygon::movement(Mat frame,Rect roi, int nFrame)
+bool DetectMovementInPolygon::movement(Mat frameActual, Mat framePrev, Rect roi)
 {
-	Mat frameMasked= appyMask(frame);
+	Mat frameAMasked= appyMask(frameActual);
+	Mat framePMasked = appyMask(framePrev);
 	//imshow("appymask",frameMasked);
 	bool cond=false;
-	if (nFramePrev==nFrame-1)
-	{
 		//aplico mascara en frame
 		//recorto con roi frame actual y frame previo
 		//cout << "recortara:" << roi << endl;
-		Mat cropprev = framePrev(roi);
-		Mat crop = frameMasked(roi);
+		Mat cropprev = framePMasked(roi);
+		Mat crop = frameAMasked(roi);
 		//cout << "recorto" << endl;
 		cond = movementFrame(cropprev,crop);
 		//if (cond) imshow("crop",crop);
 		return cond;
-	};
 	
-	framePrev = frameMasked;
-	nFramePrev=nFrame;
-	return cond;
 	};
 
 Mat DetectMovementInPolygon::appyMask(Mat frame)

@@ -11,7 +11,7 @@ class DetectMovementInPolygon
 		bool movement(Mat frame,vector<Point> subPoly);
 		Mat appyMask(Mat frame);
 		void createMask(Size s, vector<Point> poly);
-		bool movement(Mat frame,Rect roi, int nFrame);
+		bool movement(Mat frameActual, Mat framePrev, Rect roi);
 	private:
 		vector<Point> roiPolygonal;
 		Mat framePrev;

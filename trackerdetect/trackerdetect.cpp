@@ -97,7 +97,7 @@ int main(int argc, char** argv)
     //Read from video file
     VideoCapture vc;
     Mat frame;
-    Mat framePrevC;
+    Mat frameCPrev;
     Mat frameC;
     vc.open(video_filename.c_str());
     if (!vc.isOpened()) throw runtime_error(string("can't open video file: " + video_filename));
@@ -106,6 +106,7 @@ int main(int argc, char** argv)
     
     //extraigo dimensiones
     vc >> frame;
+    frameC = frame;
     Size s = frame.size();
     
     Rect roiFrame;
@@ -124,25 +125,10 @@ int main(int argc, char** argv)
     for (;;)
     {
 		nFrame++;
-		framePrevC=frameC.clone();
+		frameCPrev=frameC;
 		vc >> frame;
-	
-		/*
-		Point* pts = new Point[4];
-		
-		//Point p1,p2,p3,p4;
-		pts[0].x=100;
-		pts[0].y=100;
-		pts[1].x=200;
-		pts[1].y=200;
-		pts[2].x=100;
-		pts[2].y=400;
-		pts[3].x=120;
-		pts[3].y=100;
-		
-		fillConvexPoly(frame, pts, 4, Scalar(0,0,255),16,0);
-				*/
 		frameC=frame.clone();
+		
 		if (frame.empty()) break;
 		
 		Mat grayFrame;
@@ -156,7 +142,7 @@ int main(int argc, char** argv)
             
 		cout << "frame:" << nFrame << endl;
         for (int i = 0; i < objs.size(); i++) {
-            	cout << "objeto " << objs[i].second << ":";
+          //  	cout << "objeto " << objs[i].second << ":";
             	Rect r = objs[i].first;
             	int iExt = objs[i].second;
             	int iInt;
@@ -166,9 +152,9 @@ int main(int argc, char** argv)
 					iInt = index.size();
 					};
             	
-            	cout << "interno:" << iInt << ", "  << "externo:" << iExt << endl;
+            //	cout << "interno:" << iInt << ", "  << "externo:" << iExt << endl;
             	
-            	cout <<  "(" << r.x << "," << r.y << ")" << endl;
+            //	cout <<  "(" << r.x << "," << r.y << ")" << endl;
 				
 				//inserto en la base de datos
             	//dbconn.insertPickUpInformation(nFrame,0,objs[i].second,r.x,r.y,0);
@@ -194,38 +180,16 @@ int main(int argc, char** argv)
            	Object objr;
 			if (intersection(r,ROIline) && intersection(r,objs,objr))
 			{
+				cout << "caja azul " << r << endl;
+				cout << "interseca con caja verde:" << objr.first << endl;
 			//	cout << "interseccion con zona de interes" << endl;
 				//tengo que recortar y aplicar detector de mano
 			
 				Rect roi;
-				
 				roi = ROIExtended(r,s);
 				
-				//en ROI extended voy a buscar brazos verticales
-				//Mat crop = frameC(roi);
-				
-				/*
-				vector<Rect> brazos;
-				detectorBrazoVertical.detectMultiScale(frame, brazos, 1.1, 50, 0 | 1, minSizeBVer, maxSizeBVer);
-				
-				for (int m=0; m< brazos.size();m++)
-				{
-					Rect r = brazos[m];
-					if (RectIn(r,s)) drawRectangle(frame,r,Scalar(0,0,255));
-					};
-				
-				vector<Rect> brazosHor;
-				detectorBrazoHorizontal.detectMultiScale(frameC, brazosHor, 1.1, 50, 0 | 1, Size(86,40), Size(100,60));
-				
-				for (int m=0; m< brazosHor.size();m++)
-				{
-					Rect r = brazosHor[m];
-					if (RectIn(r,s)) drawRectangle(frame,r,Scalar(0,255,255));
-					};
-				*/
-				
 				vector<Rect> brazosRec;
-				detectorBrazoRectangulo.detectMultiScale(frame, brazosRec, 1.1, 30, 0 | 1, Size(40,40), Size(70,70));
+				detectorBrazoRectangulo.detectMultiScale(frame, brazosRec, 1.1, 50, 0 | 1, Size(40,40), Size(70,70));
 				
 				for (int m=0; m< brazosRec.size();m++)
 				{
@@ -234,36 +198,21 @@ int main(int argc, char** argv)
 					{
 						drawRectangle(frame,brazo,Scalar(0,255,255));
 						lastBrazo = brazo;
+						if (dmpoly.movement(frameC,frameCPrev,roi))
+						{
+						cout << "MANO en GONDOLA" << endl;
+						cout << brazo << endl;
+						
+						int indiceExt = objr.second;
+						int indiceInt;
+						index.get(indiceExt,indiceInt);
 						};
-					 
 					};
-					
-					
+				}
+				
+		
 				//cout << "ROI:" << roi << endl;
 				vector<Point> vecpoli = getPolygon(roi,Linea1Gondola,Linea2Gondola);
-			
-				if (dmpoly.movement(frameC,roi,nFrame))
-				{
-					cout << "MANO en GONDOLA" << endl;
-					if (lastBrazo.x!=-1)
-					{
-						cout << lastBrazo << endl;
-						};
-					};
-					
-				//ahora tengo que aplicar detector de mano
-				//si alguna mano esta intersecada con la roi actual, dibujo el rectangulo
-				
-				for (int m=0;m < manos.size();m++)
-				{
-						Rect mano = manos[i].first;
-						if ((mano & roi).area()>0)
-						{
-							drawRectangle(frame,mano,Scalar(0,0,255));
-							};
-					};
-				
-				//imshow("crop", crop);
 				
 				drawRectangle(frame,r,Scalar(255,0,0));
 				};

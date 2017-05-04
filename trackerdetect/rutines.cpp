@@ -219,5 +219,6 @@ Rect ROIExtended(Rect &r,Size s)
 	roi.y = max(0,r.y-24);
 	roi.height = min(r.height+80,s.height);
 	if (roi.height+roi.y > s.height) roi.height = s.height-roi.y;
+	return roi;
 };
 
