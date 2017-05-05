@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <map>
 
 #include <opencv2/highgui.hpp>
 #include <opencv2/video.hpp>
@@ -18,6 +19,52 @@
 using namespace cv;
 using namespace std;
 
+class RegBDFrame
+{
+	public:
+	//dado un indice de persona, asociar las manos
+	map<int, Point>* posMano;
+	map<int, Point>* posCabeza;
+	long int nFrame;
+	
+	RegBDFrame()
+	{
+		posMano = new map<int, Point>();
+		posCabeza = new map<int, Point>();
+		};
+	void writeinBD(DBConnection &dbconn);
+	//regDBFrame()
+	
+};
+
+void RegBDFrame::writeinBD(DBConnection &dbconn)
+	{
+		
+		cout << "writeinBD" << endl;
+		map<int,Point>::iterator it = posCabeza->begin();
+		
+		cout << "tamaño" << posCabeza->size() << endl;
+		if (it==posCabeza->end()) cout << "map vacio" << endl;
+		while (it!=posCabeza->end())
+		{
+			cout << "cabeza ?" << endl;
+			int indice = it->first;
+			Point cabeza = it->second;
+			map<int,Point>::iterator itSearchMano = posMano->find(indice);
+			
+			if (itSearchMano!= posMano->end())
+			{
+				Point mano = itSearchMano->second;
+				dbconn.insertPickUpInformation(nFrame,0,indice,cabeza.x,cabeza.y,0,1,mano.x,mano.y,1);
+				} else
+				{
+					dbconn.insertPickUpInformation(nFrame,0,indice,cabeza.x,cabeza.y,0);
+					};
+			it++;
+			};
+		//dbconn.insertPickUpInformation(nFrame,0,objs[i].second,r.x,r.y,0);
+		cout << "sale " << endl;
+		};
 int main(int argc, char** argv)
 {
 
@@ -130,7 +177,10 @@ int main(int argc, char** argv)
 		frameC=frame.clone();
 		
 		if (frame.empty()) break;
+		cout << "nuevo reg" << endl;
+		RegBDFrame* reg = new RegBDFrame();
 		
+		reg->nFrame=nFrame;
 		Mat grayFrame;
 		cvtColor(frame, grayFrame, COLOR_RGB2GRAY);
 	
@@ -151,7 +201,12 @@ int main(int argc, char** argv)
 					index.put(iExt);
 					iInt = index.size();
 					};
-            	
+				
+				Point cabeza;
+				cabeza.x = r.x;
+				cabeza.y = r.y;
+				cout << "escribo en mapa" << endl;
+				reg->posCabeza->insert(pair<int, Point >(iInt, cabeza));
             //	cout << "interno:" << iInt << ", "  << "externo:" << iExt << endl;
             	
             //	cout <<  "(" << r.x << "," << r.y << ")" << endl;
@@ -206,6 +261,12 @@ int main(int argc, char** argv)
 						int indiceExt = objr.second;
 						int indiceInt;
 						index.get(indiceExt,indiceInt);
+						
+						Point mano;
+						mano.x=brazo.x;
+						mano.y=brazo.y;
+						
+						reg->posMano->insert(pair<int, Point >(indiceInt, mano));
 						};
 					};
 				}
@@ -221,7 +282,10 @@ int main(int argc, char** argv)
            	//dibujo
            	
 		}
-        
+    reg->writeinBD(dbconn);
+     cout << "elimino reg" << endl;
+   // delete reg;
+   
 		imshow("people detector", frame);
 		int c = waitKey( vc.isOpened() ? 30 : 0 ) & 255;
 		if ( c == 'q' || c == 'Q' || c == 27)

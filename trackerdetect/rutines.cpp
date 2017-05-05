@@ -108,7 +108,7 @@ bool movementFrame(Mat imgprev, Mat img)
 	absdiff(imgprev, img, motion);
 	threshold(motion, motion, 40, 255, cv::THRESH_BINARY);
 	erode(motion, motion, cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3,3)));
-	if (!isGrayImage(motion)) imshow("mov",motion);
+	//if (!isGrayImage(motion)) imshow("mov",motion);
 	return !isGrayImage(motion);
 	};
 

@@ -69,6 +69,8 @@ string
 -
 vector
 -
+map
+-
 opencv2/highgui.hpp
 -
 opencv2/video.hpp
