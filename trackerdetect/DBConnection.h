@@ -20,6 +20,7 @@ private:
 	MYSQL *conn;
 	MYSQL_RES *res;
 	MYSQL_ROW row;
+	string cacheQuery;
 public:
 	DBConnection(ConnectionData data);
 	~DBConnection(void);
@@ -34,6 +35,8 @@ public:
 	string getLastPickupId();
 
 	bool insertLog(string log);
+	
+	bool writeCache();
 
 	struct tm * startProcessing(struct tm*);
 };

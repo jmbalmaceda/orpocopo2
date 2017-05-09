@@ -40,14 +40,14 @@ class RegBDFrame
 void RegBDFrame::writeinBD(DBConnection &dbconn)
 	{
 		
-		cout << "writeinBD" << endl;
+	
 		map<int,Point>::iterator it = posCabeza->begin();
 		
-		cout << "tamaño" << posCabeza->size() << endl;
-		if (it==posCabeza->end()) cout << "map vacio" << endl;
+	
+
 		while (it!=posCabeza->end())
 		{
-			cout << "cabeza ?" << endl;
+			
 			int indice = it->first;
 			Point cabeza = it->second;
 			map<int,Point>::iterator itSearchMano = posMano->find(indice);
@@ -63,7 +63,6 @@ void RegBDFrame::writeinBD(DBConnection &dbconn)
 			it++;
 			};
 		//dbconn.insertPickUpInformation(nFrame,0,objs[i].second,r.x,r.y,0);
-		cout << "sale " << endl;
 		};
 int main(int argc, char** argv)
 {
@@ -177,7 +176,7 @@ int main(int argc, char** argv)
 		frameC=frame.clone();
 		
 		if (frame.empty()) break;
-		cout << "nuevo reg" << endl;
+		
 		RegBDFrame* reg = new RegBDFrame();
 		
 		reg->nFrame=nFrame;
@@ -205,7 +204,6 @@ int main(int argc, char** argv)
 				Point cabeza;
 				cabeza.x = r.x;
 				cabeza.y = r.y;
-				cout << "escribo en mapa" << endl;
 				reg->posCabeza->insert(pair<int, Point >(iInt, cabeza));
             //	cout << "interno:" << iInt << ", "  << "externo:" << iExt << endl;
             	
@@ -224,9 +222,6 @@ int main(int argc, char** argv)
 		vector<Object> objsPersona;
         DetectorPersona.getObjects(objsPersona);
         
-        DetectorMano.process(grayFrame);
-        vector<Object> manos;
-        DetectorMano.getObjects(manos);
         
       // cout << "CAJAS AZULES:" << endl;
         for (int i = 0; i < objsPersona.size(); i++) {
@@ -235,8 +230,6 @@ int main(int argc, char** argv)
            	Object objr;
 			if (intersection(r,ROIline) && intersection(r,objs,objr))
 			{
-				cout << "caja azul " << r << endl;
-				cout << "interseca con caja verde:" << objr.first << endl;
 			//	cout << "interseccion con zona de interes" << endl;
 				//tengo que recortar y aplicar detector de mano
 			
@@ -283,7 +276,7 @@ int main(int argc, char** argv)
            	
 		}
     reg->writeinBD(dbconn);
-     cout << "elimino reg" << endl;
+
    // delete reg;
    
 		imshow("people detector", frame);
@@ -291,7 +284,7 @@ int main(int argc, char** argv)
 		if ( c == 'q' || c == 'Q' || c == 27)
 			break;
 	}
-   
+    dbconn.writeCache();
 	frame.release();
     vc.release();
     

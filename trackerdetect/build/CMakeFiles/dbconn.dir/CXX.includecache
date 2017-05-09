@@ -11,10 +11,6 @@ DBConnection.h
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.h
 mysql/mysql.h
 -
-IniWriter.h
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/IniWriter.h
-IniReader.h
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/IniReader.h
 stdio.h
 -
 time.h

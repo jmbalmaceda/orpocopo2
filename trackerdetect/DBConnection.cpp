@@ -1,8 +1,6 @@
 #include "DBConnection.h"
 #include <mysql/mysql.h>
-/*
-#include "IniWriter.h"
-#include "IniReader.h"*/
+
 #include <stdio.h>
 #include <time.h>
 #include <iostream>
@@ -10,8 +8,7 @@
 #include <sys/timeb.h>
 #include <cstring>
 
-//#include "RoI_Information.h"
-
+#define MAXCACHESIZE 200
 using namespace std;
 
 
@@ -60,6 +57,13 @@ int getMillis(){
 	return tb.millitm;
 }
 
+bool DBConnection::writeCache()
+{
+	if (mysql_query(conn, cacheQuery.c_str())){
+			return false;
+		}
+		return true;
+	};
 string DBConnection::getCurrentTimeAsString(){
 
   time_t rawtime;
@@ -148,10 +152,14 @@ bool DBConnection::insertPickUpInformation(int frame, int count_blobs, int blob_
 		sql.append(", ");
 		sql.append(to_string(blob_hand_depth).c_str());
 		sql.append(");");
-		if (mysql_query(conn, sql.c_str())){
-			return false;
-		}
-		return true;
+		
+		cacheQuery.append(sql);
+		if (cacheQuery.size() > MAXCACHESIZE)
+		{
+				writeCache();
+				cacheQuery=" ";
+		};
+				
 	}
 
 	bool DBConnection::insertPickUpInformation(int frame, int count_blobs, int blob_id, int blob_x, int blob_y, int blob_depth){
@@ -170,10 +178,16 @@ bool DBConnection::insertPickUpInformation(int frame, int count_blobs, int blob_
 		sql.append(", ");
 		sql.append(to_string(blob_depth).c_str());
 		sql.append(");");
-		if (mysql_query(conn, sql.c_str())){
-			return false;
-		}
-		return true;
+		
+		if ((sql.size()+cacheQuery.size() < MAXCACHESIZE))
+		{
+			cacheQuery.append('\n'+sql);
+		} else
+		{
+			writeCache();
+			cacheQuery=sql;
+		};
+				
 	}
 
 	/// Dada un horario, obtiene en la base de datos si está en un periodo de tiempo en el cual hay que analizar.
