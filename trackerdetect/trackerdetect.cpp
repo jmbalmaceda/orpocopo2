@@ -104,11 +104,12 @@ int main(int argc, char** argv)
 	int ROIline=stoi(p.top()["ROIline"]);
 	string slinea1Gondola=p.top()["linea1"];
 	string slinea2Gondola=p.top()["linea2"];
-	
+	string slinea3Gondola=p.top()["linea3"];
 	
 	//calculo la ROI de la gondola para el frame entero
 	Line Linea1Gondola = str2line(slinea1Gondola);
 	Line Linea2Gondola = str2line(slinea2Gondola);
+	Line Linea3Gondola = str2line(slinea3Gondola);
 	
 	DBConnection dbconn(data);
 	
@@ -161,7 +162,7 @@ int main(int argc, char** argv)
     roiFrame.width = s.width;
     roiFrame.height = s.height;
     
-	vector<Point> vecpoli = getPolygon(roiFrame,Linea1Gondola,Linea2Gondola);
+	vector<Point> vecpoli = getPolygon(roiFrame,Linea1Gondola,Linea3Gondola);
 	
 	DetectMovementInPolygon dmpoly(frame,vecpoli);
     
@@ -248,7 +249,8 @@ int main(int argc, char** argv)
 						lastBrazo = brazo;
 						if (dmpoly.movement(frameC,frameCPrev,roi))
 						{
-						cout << "MANO en GONDOLA" << endl;
+						if (brazo.x<= 217) cout << "MANO en GONDOLA 1" << endl;
+						if (brazo.x > 217) cout << "MANO en GONDOLA 2" << endl;
 						cout << brazo << endl;
 						
 						int indiceExt = objr.second;
