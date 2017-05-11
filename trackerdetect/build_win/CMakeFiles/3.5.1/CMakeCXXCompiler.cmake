@@ -1,4 +1,4 @@
-set(CMAKE_CXX_COMPILER "/usr/bin/i686-w64-mingw32-g++")
+set(CMAKE_CXX_COMPILER "/usr/bin/x86_64-w64-mingw32-g++")
 set(CMAKE_CXX_COMPILER_ARG1 "")
 set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_COMPILER_VERSION "5.3.1")
@@ -13,9 +13,9 @@ set(CMAKE_CXX_PLATFORM_ID "MinGW")
 set(CMAKE_CXX_SIMULATE_ID "")
 set(CMAKE_CXX_SIMULATE_VERSION "")
 
-set(CMAKE_AR "/usr/bin/i686-w64-mingw32-ar")
-set(CMAKE_RANLIB "/usr/bin/i686-w64-mingw32-ranlib")
-set(CMAKE_LINKER "/usr/bin/i686-w64-mingw32-ld")
+set(CMAKE_AR "/usr/bin/x86_64-w64-mingw32-ar")
+set(CMAKE_RANLIB "/usr/bin/x86_64-w64-mingw32-ranlib")
+set(CMAKE_LINKER "/usr/bin/x86_64-w64-mingw32-ld")
 set(CMAKE_COMPILER_IS_GNUCXX 1)
 set(CMAKE_CXX_COMPILER_LOADED 1)
 set(CMAKE_CXX_COMPILER_WORKS TRUE)
@@ -39,7 +39,7 @@ set(CMAKE_CXX_LINKER_PREFERENCE 30)
 set(CMAKE_CXX_LINKER_PREFERENCE_PROPAGATES 1)
 
 # Save compiler ABI information.
-set(CMAKE_CXX_SIZEOF_DATA_PTR "4")
+set(CMAKE_CXX_SIZEOF_DATA_PTR "8")
 set(CMAKE_CXX_COMPILER_ABI "")
 set(CMAKE_CXX_LIBRARY_ARCHITECTURE "")
 
@@ -64,5 +64,5 @@ endif()
 
 
 set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;mingw32;moldname;mingwex;msvcrt;advapi32;shell32;user32;kernel32;mingw32;moldname;mingwex;msvcrt")
-set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/usr/lib/gcc/i686-w64-mingw32/5.3-win32;/usr/i686-w64-mingw32/lib")
+set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/usr/lib/gcc/x86_64-w64-mingw32/5.3-win32;/usr/x86_64-w64-mingw32/lib")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

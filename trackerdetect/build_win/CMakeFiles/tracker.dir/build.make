@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/codigo/trackerdetect
+CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win
@@ -58,17 +58,18 @@ include CMakeFiles/tracker.dir/progress.make
 include CMakeFiles/tracker.dir/flags.make
 
 CMakeFiles/tracker.dir/tracker.cpp.obj: CMakeFiles/tracker.dir/flags.make
-CMakeFiles/tracker.dir/tracker.cpp.obj: /mnt/datos/Dropbox/orco/codigo/trackerdetect/tracker.cpp
+CMakeFiles/tracker.dir/tracker.cpp.obj: CMakeFiles/tracker.dir/includes_CXX.rsp
+CMakeFiles/tracker.dir/tracker.cpp.obj: ../tracker.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tracker.dir/tracker.cpp.obj"
-	/usr/bin/i686-w64-mingw32-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tracker.dir/tracker.cpp.obj -c /mnt/datos/Dropbox/orco/codigo/trackerdetect/tracker.cpp
+	/usr/bin/x86_64-w64-mingw32-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tracker.dir/tracker.cpp.obj -c /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/tracker.cpp
 
 CMakeFiles/tracker.dir/tracker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tracker.dir/tracker.cpp.i"
-	/usr/bin/i686-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/datos/Dropbox/orco/codigo/trackerdetect/tracker.cpp > CMakeFiles/tracker.dir/tracker.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/tracker.cpp > CMakeFiles/tracker.dir/tracker.cpp.i
 
 CMakeFiles/tracker.dir/tracker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tracker.dir/tracker.cpp.s"
-	/usr/bin/i686-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/datos/Dropbox/orco/codigo/trackerdetect/tracker.cpp -o CMakeFiles/tracker.dir/tracker.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/tracker.cpp -o CMakeFiles/tracker.dir/tracker.cpp.s
 
 CMakeFiles/tracker.dir/tracker.cpp.obj.requires:
 
@@ -109,6 +110,6 @@ CMakeFiles/tracker.dir/clean:
 .PHONY : CMakeFiles/tracker.dir/clean
 
 CMakeFiles/tracker.dir/depend:
-	cd /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/datos/Dropbox/orco/codigo/trackerdetect /mnt/datos/Dropbox/orco/codigo/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/tracker.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/tracker.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tracker.dir/depend
 

@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.h
+mysql.h
+-
 mysql/mysql.h
 -
 string

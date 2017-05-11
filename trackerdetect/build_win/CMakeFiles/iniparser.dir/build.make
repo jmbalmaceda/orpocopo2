@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/codigo/trackerdetect
+CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win
@@ -58,17 +58,18 @@ include CMakeFiles/iniparser.dir/progress.make
 include CMakeFiles/iniparser.dir/flags.make
 
 CMakeFiles/iniparser.dir/ini.cpp.obj: CMakeFiles/iniparser.dir/flags.make
-CMakeFiles/iniparser.dir/ini.cpp.obj: /mnt/datos/Dropbox/orco/codigo/trackerdetect/ini.cpp
+CMakeFiles/iniparser.dir/ini.cpp.obj: CMakeFiles/iniparser.dir/includes_CXX.rsp
+CMakeFiles/iniparser.dir/ini.cpp.obj: ../ini.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/iniparser.dir/ini.cpp.obj"
-	/usr/bin/i686-w64-mingw32-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iniparser.dir/ini.cpp.obj -c /mnt/datos/Dropbox/orco/codigo/trackerdetect/ini.cpp
+	/usr/bin/x86_64-w64-mingw32-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/iniparser.dir/ini.cpp.obj -c /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp
 
 CMakeFiles/iniparser.dir/ini.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/iniparser.dir/ini.cpp.i"
-	/usr/bin/i686-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/datos/Dropbox/orco/codigo/trackerdetect/ini.cpp > CMakeFiles/iniparser.dir/ini.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp > CMakeFiles/iniparser.dir/ini.cpp.i
 
 CMakeFiles/iniparser.dir/ini.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/iniparser.dir/ini.cpp.s"
-	/usr/bin/i686-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/datos/Dropbox/orco/codigo/trackerdetect/ini.cpp -o CMakeFiles/iniparser.dir/ini.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp -o CMakeFiles/iniparser.dir/ini.cpp.s
 
 CMakeFiles/iniparser.dir/ini.cpp.obj.requires:
 
@@ -109,6 +110,6 @@ CMakeFiles/iniparser.dir/clean:
 .PHONY : CMakeFiles/iniparser.dir/clean
 
 CMakeFiles/iniparser.dir/depend:
-	cd /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/datos/Dropbox/orco/codigo/trackerdetect /mnt/datos/Dropbox/orco/codigo/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/iniparser.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/iniparser.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/iniparser.dir/depend
 

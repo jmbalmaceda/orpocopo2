@@ -4,12 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/mnt/datos/Dropbox/orco/codigo/trackerdetect/tracker.cpp" "/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/tracker.dir/tracker.cpp.obj"
+  "/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/tracker.cpp" "/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/tracker.dir/tracker.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/mnt/d/opencv_build/install/include"
+  "/mnt/d/mysql-mariadb/include"
   )
 
 # Targets to which this target links.

@@ -1,5 +1,12 @@
 #include "DBConnection.h"
-#include <mysql/mysql.h>
+
+#ifdef _WIN32
+	#include <mysql.h>
+#else
+	#include <mysql/mysql.h>
+#endif
+#include <string>
+
 
 #include <stdio.h>
 #include <time.h>

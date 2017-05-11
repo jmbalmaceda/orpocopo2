@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/datos/Dropbox/orco/codigo/trackerdetect
+# Install script for directory: /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,6 +1,8 @@
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/edit_cache.dir
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/rebuild_cache.dir
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/index.dir
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/trackerdetect.dir
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/detect_mov.dir
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/rutines.dir
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/tracker.dir
 /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/iniparser.dir

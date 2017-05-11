@@ -48,7 +48,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/codigo/trackerdetect
+CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win
@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named index
+
+# Build rule for target.
+index: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 index
+.PHONY : index
+
+# fast build rule for target.
+index/fast:
+	$(MAKE) -f CMakeFiles/index.dir/build.make CMakeFiles/index.dir/build
+.PHONY : index/fast
+
+#=============================================================================
 # Target rules for targets named trackerdetect
 
 # Build rule for target.
@@ -122,6 +135,19 @@ trackerdetect: cmake_check_build_system
 trackerdetect/fast:
 	$(MAKE) -f CMakeFiles/trackerdetect.dir/build.make CMakeFiles/trackerdetect.dir/build
 .PHONY : trackerdetect/fast
+
+#=============================================================================
+# Target rules for targets named detect_mov
+
+# Build rule for target.
+detect_mov: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 detect_mov
+.PHONY : detect_mov
+
+# fast build rule for target.
+detect_mov/fast:
+	$(MAKE) -f CMakeFiles/detect_mov.dir/build.make CMakeFiles/detect_mov.dir/build
+.PHONY : detect_mov/fast
 
 #=============================================================================
 # Target rules for targets named rutines
@@ -201,6 +227,60 @@ DBConnection.s: DBConnection.cpp.s
 DBConnection.cpp.s:
 	$(MAKE) -f CMakeFiles/dbconn.dir/build.make CMakeFiles/dbconn.dir/DBConnection.cpp.s
 .PHONY : DBConnection.cpp.s
+
+detect_movement.obj: detect_movement.cpp.obj
+
+.PHONY : detect_movement.obj
+
+# target to build an object file
+detect_movement.cpp.obj:
+	$(MAKE) -f CMakeFiles/detect_mov.dir/build.make CMakeFiles/detect_mov.dir/detect_movement.cpp.obj
+.PHONY : detect_movement.cpp.obj
+
+detect_movement.i: detect_movement.cpp.i
+
+.PHONY : detect_movement.i
+
+# target to preprocess a source file
+detect_movement.cpp.i:
+	$(MAKE) -f CMakeFiles/detect_mov.dir/build.make CMakeFiles/detect_mov.dir/detect_movement.cpp.i
+.PHONY : detect_movement.cpp.i
+
+detect_movement.s: detect_movement.cpp.s
+
+.PHONY : detect_movement.s
+
+# target to generate assembly for a file
+detect_movement.cpp.s:
+	$(MAKE) -f CMakeFiles/detect_mov.dir/build.make CMakeFiles/detect_mov.dir/detect_movement.cpp.s
+.PHONY : detect_movement.cpp.s
+
+index.obj: index.cpp.obj
+
+.PHONY : index.obj
+
+# target to build an object file
+index.cpp.obj:
+	$(MAKE) -f CMakeFiles/index.dir/build.make CMakeFiles/index.dir/index.cpp.obj
+.PHONY : index.cpp.obj
+
+index.i: index.cpp.i
+
+.PHONY : index.i
+
+# target to preprocess a source file
+index.cpp.i:
+	$(MAKE) -f CMakeFiles/index.dir/build.make CMakeFiles/index.dir/index.cpp.i
+.PHONY : index.cpp.i
+
+index.s: index.cpp.s
+
+.PHONY : index.s
+
+# target to generate assembly for a file
+index.cpp.s:
+	$(MAKE) -f CMakeFiles/index.dir/build.make CMakeFiles/index.dir/index.cpp.s
+.PHONY : index.cpp.s
 
 ini.obj: ini.cpp.obj
 
@@ -318,7 +398,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... index"
 	@echo "... trackerdetect"
+	@echo "... detect_mov"
 	@echo "... rutines"
 	@echo "... tracker"
 	@echo "... iniparser"
@@ -326,6 +408,12 @@ help:
 	@echo "... DBConnection.obj"
 	@echo "... DBConnection.i"
 	@echo "... DBConnection.s"
+	@echo "... detect_movement.obj"
+	@echo "... detect_movement.i"
+	@echo "... detect_movement.s"
+	@echo "... index.obj"
+	@echo "... index.i"
+	@echo "... index.s"
 	@echo "... ini.obj"
 	@echo "... ini.i"
 	@echo "... ini.s"

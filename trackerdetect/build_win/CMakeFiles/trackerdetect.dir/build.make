@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/codigo/trackerdetect
+CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win
@@ -58,17 +58,18 @@ include CMakeFiles/trackerdetect.dir/progress.make
 include CMakeFiles/trackerdetect.dir/flags.make
 
 CMakeFiles/trackerdetect.dir/trackerdetect.cpp.obj: CMakeFiles/trackerdetect.dir/flags.make
-CMakeFiles/trackerdetect.dir/trackerdetect.cpp.obj: /mnt/datos/Dropbox/orco/codigo/trackerdetect/trackerdetect.cpp
+CMakeFiles/trackerdetect.dir/trackerdetect.cpp.obj: CMakeFiles/trackerdetect.dir/includes_CXX.rsp
+CMakeFiles/trackerdetect.dir/trackerdetect.cpp.obj: ../trackerdetect.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/trackerdetect.dir/trackerdetect.cpp.obj"
-	/usr/bin/i686-w64-mingw32-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/trackerdetect.dir/trackerdetect.cpp.obj -c /mnt/datos/Dropbox/orco/codigo/trackerdetect/trackerdetect.cpp
+	/usr/bin/x86_64-w64-mingw32-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/trackerdetect.dir/trackerdetect.cpp.obj -c /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/trackerdetect.cpp
 
 CMakeFiles/trackerdetect.dir/trackerdetect.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/trackerdetect.dir/trackerdetect.cpp.i"
-	/usr/bin/i686-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/datos/Dropbox/orco/codigo/trackerdetect/trackerdetect.cpp > CMakeFiles/trackerdetect.dir/trackerdetect.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/trackerdetect.cpp > CMakeFiles/trackerdetect.dir/trackerdetect.cpp.i
 
 CMakeFiles/trackerdetect.dir/trackerdetect.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/trackerdetect.dir/trackerdetect.cpp.s"
-	/usr/bin/i686-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/datos/Dropbox/orco/codigo/trackerdetect/trackerdetect.cpp -o CMakeFiles/trackerdetect.dir/trackerdetect.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/trackerdetect.cpp -o CMakeFiles/trackerdetect.dir/trackerdetect.cpp.s
 
 CMakeFiles/trackerdetect.dir/trackerdetect.cpp.obj.requires:
 
@@ -93,22 +94,24 @@ trackerdetect.exe: CMakeFiles/trackerdetect.dir/build.make
 trackerdetect.exe: libdbconn.a
 trackerdetect.exe: librutines.a
 trackerdetect.exe: libtracker.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_shape320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_stitching320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_superres320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_videostab320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_objdetect320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_calib3d320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_features2d320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_flann320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_highgui320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_ml320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_photo320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_video320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_videoio320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_imgcodecs320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_imgproc320.dll.a
-trackerdetect.exe: D:/opencv_build/lib/libopencv_core320.dll.a
+trackerdetect.exe: libdetect_mov.a
+trackerdetect.exe: libindex.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_shape320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_stitching320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_superres320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_videostab320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_objdetect320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_calib3d320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_features2d320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_flann320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_highgui320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_ml320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_photo320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_video320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_videoio320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_imgcodecs320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_imgproc320.dll.a
+trackerdetect.exe: /mnt/d/opencv_build/install/x64/mingw/lib/libopencv_core320.dll.a
 trackerdetect.exe: CMakeFiles/trackerdetect.dir/linklibs.rsp
 trackerdetect.exe: CMakeFiles/trackerdetect.dir/objects1.rsp
 trackerdetect.exe: CMakeFiles/trackerdetect.dir/link.txt
@@ -129,6 +132,6 @@ CMakeFiles/trackerdetect.dir/clean:
 .PHONY : CMakeFiles/trackerdetect.dir/clean
 
 CMakeFiles/trackerdetect.dir/depend:
-	cd /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/datos/Dropbox/orco/codigo/trackerdetect /mnt/datos/Dropbox/orco/codigo/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/trackerdetect.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/trackerdetect.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/trackerdetect.dir/depend
 

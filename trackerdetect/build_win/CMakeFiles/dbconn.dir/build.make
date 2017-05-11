@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/codigo/trackerdetect
+CMAKE_SOURCE_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win
@@ -58,17 +58,18 @@ include CMakeFiles/dbconn.dir/progress.make
 include CMakeFiles/dbconn.dir/flags.make
 
 CMakeFiles/dbconn.dir/DBConnection.cpp.obj: CMakeFiles/dbconn.dir/flags.make
-CMakeFiles/dbconn.dir/DBConnection.cpp.obj: /mnt/datos/Dropbox/orco/codigo/trackerdetect/DBConnection.cpp
+CMakeFiles/dbconn.dir/DBConnection.cpp.obj: CMakeFiles/dbconn.dir/includes_CXX.rsp
+CMakeFiles/dbconn.dir/DBConnection.cpp.obj: ../DBConnection.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/dbconn.dir/DBConnection.cpp.obj"
-	/usr/bin/i686-w64-mingw32-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dbconn.dir/DBConnection.cpp.obj -c /mnt/datos/Dropbox/orco/codigo/trackerdetect/DBConnection.cpp
+	/usr/bin/x86_64-w64-mingw32-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/dbconn.dir/DBConnection.cpp.obj -c /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.cpp
 
 CMakeFiles/dbconn.dir/DBConnection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dbconn.dir/DBConnection.cpp.i"
-	/usr/bin/i686-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/datos/Dropbox/orco/codigo/trackerdetect/DBConnection.cpp > CMakeFiles/dbconn.dir/DBConnection.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.cpp > CMakeFiles/dbconn.dir/DBConnection.cpp.i
 
 CMakeFiles/dbconn.dir/DBConnection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dbconn.dir/DBConnection.cpp.s"
-	/usr/bin/i686-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/datos/Dropbox/orco/codigo/trackerdetect/DBConnection.cpp -o CMakeFiles/dbconn.dir/DBConnection.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.cpp -o CMakeFiles/dbconn.dir/DBConnection.cpp.s
 
 CMakeFiles/dbconn.dir/DBConnection.cpp.obj.requires:
 
@@ -109,6 +110,6 @@ CMakeFiles/dbconn.dir/clean:
 .PHONY : CMakeFiles/dbconn.dir/clean
 
 CMakeFiles/dbconn.dir/depend:
-	cd /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/datos/Dropbox/orco/codigo/trackerdetect /mnt/datos/Dropbox/orco/codigo/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/dbconn.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win /mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/build_win/CMakeFiles/dbconn.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/dbconn.dir/depend
 

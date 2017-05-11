@@ -1,5 +1,9 @@
 #pragma once
-#include <mysql/mysql.h>
+#ifdef _WIN32
+	#include <mysql.h>
+#else
+	#include <mysql/mysql.h>
+#endif
 #include <string>
 
 using namespace std;
