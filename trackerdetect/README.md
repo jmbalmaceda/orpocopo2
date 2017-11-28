@@ -1,11 +1,11 @@
 TrackerDetect v1
 
-*** Compilacion ***
+### Compilacion 
 
 Opencv3 con repositorio contrib. Usar Cmake.
 Luego ejecutar make en el subdirectorio build.
 
-*** Ejecucion ***
+### Ejecucion 
 
 Al momento acepta dos parametros, 
 
@@ -18,6 +18,7 @@ puede escribir en la base de datos mysql, hay que descomentar para habilitar esa
 El archivo conf.ini contiene las configuraciones al momento habilitadas, que son las siguientes:
 
 [detector]
+
 minH= Ancho minimo habilitado para deteccion de cabeza
 maxH= Ancho maximo 
 minW= Largo minimo
