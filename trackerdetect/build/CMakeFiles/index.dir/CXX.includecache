@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/index.cpp
+/mnt/datos/orco/orpocopo2/trackerdetect/index.cpp
 map
 -
 index.h
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/index.h
+/mnt/datos/orco/orpocopo2/trackerdetect/index.h
 
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/index.h
+/mnt/datos/orco/orpocopo2/trackerdetect/index.h
 map
 -
 

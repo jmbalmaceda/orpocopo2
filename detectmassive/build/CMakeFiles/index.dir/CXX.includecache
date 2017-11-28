@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/index.cpp
+map
+-
+index.h
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/index.h
+
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/index.h
+map
+-
+

@@ -13,7 +13,7 @@ typedef std::pair<cv::Rect, int> Object;
 class CascadeDetectorAdapter: public DetectionBasedTracker::IDetector
 {
 public:
-    CascadeDetectorAdapter(cv::Ptr<cv::CascadeClassifier> detector,Size minS,Size maxS);
+    CascadeDetectorAdapter(cv::Ptr<cv::CascadeClassifier> detector,Size minS, Size maxS, int n_intersecs);
 
     void detect(const cv::Mat &Image, std::vector<cv::Rect> &objects);
 
@@ -24,7 +24,8 @@ private:
     CascadeDetectorAdapter();
     Size minSize;
     Size maxSize;
+    int n_intersecs;
     cv::Ptr<cv::CascadeClassifier> Detector;
 };
 
-DetectionBasedTracker getDetectionBasedTracker(Size minS, Size maxS, int minTimeDetection, string cascadeClassifierFile);
+DetectionBasedTracker getDetectionBasedTracker(Size minS, Size maxS, int minTimeDetection, int nIntersecs, string cascadeClassifierFile);

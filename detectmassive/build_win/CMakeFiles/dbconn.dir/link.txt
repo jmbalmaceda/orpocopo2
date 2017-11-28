@@ -1,0 +1,2 @@
+/usr/bin/x86_64-w64-mingw32-ar qc libdbconn.a  CMakeFiles/dbconn.dir/DBConnection.cpp.obj
+/usr/bin/x86_64-w64-mingw32-ranlib libdbconn.a

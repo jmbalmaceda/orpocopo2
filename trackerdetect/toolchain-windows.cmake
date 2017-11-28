@@ -11,5 +11,5 @@ find_program(CMAKE_CXX_COMPILER NAMES ${COMPILER_PREFIX}-g++)
 SET(CMAKE_CXX_COMPILER ${COMPILER_PREFIX}-g++)
 
 
-include_directories(SYSTEM /mnt/d/opencv_build/install/include)
+include_directories(SYSTEM /mylibs/opencvx64_win/install/include)
 

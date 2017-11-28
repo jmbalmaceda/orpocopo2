@@ -1,0 +1,2 @@
+/usr/bin/x86_64-w64-mingw32-ar qc libdetect_mov.a  CMakeFiles/detect_mov.dir/detect_movement.cpp.obj
+/usr/bin/x86_64-w64-mingw32-ranlib libdetect_mov.a

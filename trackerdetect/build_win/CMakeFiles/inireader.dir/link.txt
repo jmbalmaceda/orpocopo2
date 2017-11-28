@@ -1,0 +1,2 @@
+/usr/bin/x86_64-w64-mingw32-ar qc libinireader.a  CMakeFiles/inireader.dir/INIReader.cpp.obj
+/usr/bin/x86_64-w64-mingw32-ranlib libinireader.a

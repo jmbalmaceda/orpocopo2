@@ -1,0 +1,10 @@
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/build/CMakeFiles/edit_cache.dir
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/build/CMakeFiles/rebuild_cache.dir
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/build/CMakeFiles/index.dir
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/build/CMakeFiles/trackerdetect.dir
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/build/CMakeFiles/detect_mov.dir
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/build/CMakeFiles/inireader.dir
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/build/CMakeFiles/rutines.dir
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/build/CMakeFiles/dbconn.dir
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/build/CMakeFiles/tracker.dir
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/build/CMakeFiles/inireaderc.dir

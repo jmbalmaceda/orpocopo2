@@ -1,0 +1,3 @@
+/usr/bin/cmake -E remove -f CMakeFiles/trackerquilmes.dir/objects.a
+/usr/bin/x86_64-w64-mingw32-ar cr CMakeFiles/trackerquilmes.dir/objects.a @CMakeFiles/trackerquilmes.dir/objects1.rsp
+/usr/bin/x86_64-w64-mingw32-g++    -Wl,--whole-archive CMakeFiles/trackerquilmes.dir/objects.a -Wl,--no-whole-archive  -o trackerquilmes.exe -Wl,--out-implib,libtrackerquilmes.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/trackerquilmes.dir/linklibs.rsp

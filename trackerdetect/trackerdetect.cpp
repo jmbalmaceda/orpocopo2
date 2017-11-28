@@ -10,11 +10,12 @@
 
 #include "DBConnection.h"
 
-#include "ini.cpp"
+
 #include "rutines.h"
 #include "tracker.h"
 #include "detect_movement.h"
 #include "index.h"
+#include "INIReader.h"
 
 using namespace cv;
 using namespace std;
@@ -68,78 +69,74 @@ int main(int argc, char** argv)
 {
 
 
-	
+
 	Index index;
 	//Leer configuracion
-	INI::Parser p = readIni("conf.ini");
-   
-	int minH=stoi(p.top()["minH"]);
-	int minW=stoi(p.top()["minW"]);
-	int maxH=stoi(p.top()["maxH"]);
-	int maxW=stoi(p.top()["maxW"]);
-	int minTimeDetect=stoi(p.top()["minTimeDetect"]);
-	string cascadeClassifierFile=p.top()["cascadeClassifierFile"];
-	string cascadeClassifierFile2=p.top()["cascadeClassifierFile2"];
-	string cascadeClassifierFileMano=p.top()["cascadeClassifierFileMano"];
 	
-	string cascadeClassifierFileBRec=p.top()["cascadeClassifierFileBRec"];
-	string cascadeClassifierFileBVer=p.top()["cascadeClassifierFileBVer"];
-	string cascadeClassifierFileBHor=p.top()["cascadeClassifierFileBHor"];
+	INIReader reader("conf.ini");
+	string username = reader.Get("detector", "name", "UNKNOWN");
+	int minH= reader.GetInteger("detector","minH",-1);
+	int minW= reader.GetInteger("detector","minW",-1);
+	int maxH= reader.GetInteger("detector","maxH",-1);
+	int maxW= reader.GetInteger("detector","maxW",-1);
+	int offsety= reader.GetInteger("detector","offsetYCajaBlanca",-1);
+	int minTimeDetect=reader.GetInteger("detector","minTimeDetect",-1);
+	int nIntersecs = reader.GetInteger("detector","nIntersecs",-1);
 	
-	CascadeClassifier detectorBrazoVertical;
-	detectorBrazoVertical.load(cascadeClassifierFileBVer);
+	string cascadeClassifierFile= reader.Get("detector","cascadeClassifierFile","NULL");
+	cout << "param:" << cascadeClassifierFile << endl;
+	string cascadeClassifierFile2= reader.Get("detector","cascadeClassifierFile2","NULL");
+	string cascadeClassifierFileMano= reader.Get("detector","cascadeClassifierMano","NULL");
+	
+	string cascadeClassifierFileBRec=reader.Get("detector","cascadeClassifierFileBRec","NULL");
 		
 	CascadeClassifier detectorBrazoRectangulo;
 	detectorBrazoRectangulo.load(cascadeClassifierFileBRec);
 	
-	CascadeClassifier detectorBrazoHorizontal;
-	detectorBrazoHorizontal.load(cascadeClassifierFileBHor);
-
 	ConnectionData data;
-	data.user = p.top()["user"];
-	data.password = p.top()["password"];
-	data.server = p.top()["server"];
-	data.database = p.top()["database"];
+	data.user = reader.Get("bd","user","NULL");
+	data.password = reader.Get("bd","password","NULL");
+	data.server = reader.Get("bd","server","NULL");
+	data.database = reader.Get("bd","database","NULL");
 	
-	int ROIline=stoi(p.top()["ROIline"]);
-	string slinea1Gondola=p.top()["linea1"];
-	string slinea2Gondola=p.top()["linea2"];
-	string slinea3Gondola=p.top()["linea3"];
+	int ROIline=reader.GetInteger("detectorMano","ROILine",-1);
+	string slinea1Gondola= reader.Get("gondola","linea1","NULL");
+	string slinea2Gondola= reader.Get("gondola","linea2","NULL");
+	string slinea3Gondola= reader.Get("gondola","linea3","NULL");
 	
 	//calculo la ROI de la gondola para el frame entero
 	Line Linea1Gondola = str2line(slinea1Gondola);
 	Line Linea2Gondola = str2line(slinea2Gondola);
 	Line Linea3Gondola = str2line(slinea3Gondola);
 	
-	DBConnection dbconn(data);
+//	DBConnection dbconn(data);
 	
 	string fileName = argv[2];
-	ofstream file(fileName.c_str(), ios::out | ios::trunc);
+	//ofstream file(fileName.c_str(), ios::out | ios::trunc);
 
   
 	//creo traker
 	Size minSize(minH,minW);
 	Size maxSize(maxH,maxW);
-	DetectionBasedTracker Detector = getDetectionBasedTracker(minSize,maxSize,minTimeDetect,cascadeClassifierFile);
+	DetectionBasedTracker Detector = getDetectionBasedTracker(minSize,maxSize,minTimeDetect,nIntersecs,cascadeClassifierFile);
 	
 	//tracker persona completa
-	Size minSize2(120,120);	
-	Size maxSize2(200,200);
-	DetectionBasedTracker DetectorPersona = getDetectionBasedTracker(minSize2,maxSize2,0,cascadeClassifierFile2);
+	Size minSize2(170,170);	
+	Size maxSize2(500,500);
+	DetectionBasedTracker DetectorPersona = getDetectionBasedTracker(minSize2,maxSize2,0,nIntersecs,cascadeClassifierFile2);
 
-
+/*
 	Size minSizeMano(40,40);	
 	Size maxSizeMano(80,80);
 	DetectionBasedTracker DetectorMano = getDetectionBasedTracker(minSizeMano,maxSizeMano,0,cascadeClassifierFileMano);
-	
-	Size minSizeBVer(40,86);	
-	Size maxSizeBVer(60,100);
-	DetectionBasedTracker DetectorBVer = getDetectionBasedTracker(minSizeBVer,maxSizeBVer,0,cascadeClassifierFileBVer);
-	
+
+	*/
 //	MultiTracker mtracker("MEDIANFLOW");
     namedWindow("people detector", WINDOW_NORMAL | WINDOW_KEEPRATIO);
     
     string video_filename = argv[1];
+
+
 
     //Read from video file
     VideoCapture vc;
@@ -147,6 +144,13 @@ int main(int argc, char** argv)
     Mat frameCPrev;
     Mat frameC;
     vc.open(video_filename.c_str());
+    
+    int ex = static_cast<int>(vc.get(CAP_PROP_FOURCC));
+    Size S = Size((int) vc.get(CAP_PROP_FRAME_WIDTH), (int) vc.get(CAP_PROP_FRAME_HEIGHT));
+    
+    VideoWriter outputVideo;                                        // Open the output
+    outputVideo.open("output.avi", ex, vc.get(CAP_PROP_FPS), S, true);
+
     if (!vc.isOpened()) throw runtime_error(string("can't open video file: " + video_filename));
     unsigned long int nFrame=0;
     
@@ -226,31 +230,38 @@ int main(int argc, char** argv)
         
       // cout << "CAJAS AZULES:" << endl;
         for (int i = 0; i < objsPersona.size(); i++) {
-  
+		
            	Rect r = objsPersona[i].first;
+           
            	Object objr;
-			if (intersection(r,ROIline) && intersection(r,objs,objr))
+           //	drawRectangle(frame,r,Scalar(255,255,255));
+			//intersection(r,ROIline) &&  intersection(r,objs,objr)
+			if (intersection(r,ROIline) )
 			{
 			//	cout << "interseccion con zona de interes" << endl;
 				//tengo que recortar y aplicar detector de mano
 			
 				Rect roi;
-				roi = ROIExtended(r,s);
+				roi = ROIExtended(r,s,offsety);
 				
+				drawRectangle(frame,roi,Scalar(255,255,255));
 				vector<Rect> brazosRec;
-				detectorBrazoRectangulo.detectMultiScale(frame, brazosRec, 1.1, 50, 0 | 1, Size(40,40), Size(70,70));
+				detectorBrazoRectangulo.detectMultiScale(frame, brazosRec, 1.1, 50, 0 | 1, Size(42,42), Size(70,70));
 				
 				for (int m=0; m< brazosRec.size();m++)
 				{
 					Rect brazo = brazosRec[m];
-					if (intersection(brazo,320))
+					//250 para garage
+					//320 santarosa
+					if (intersection(brazo,320) && ((roi & brazo).area()>0) )
 					{
 						drawRectangle(frame,brazo,Scalar(0,255,255));
 						lastBrazo = brazo;
+						//cout << "MANO en GONDOLA sin movimiento" << endl;
+						
 						if (dmpoly.movement(frameC,frameCPrev,roi))
 						{
-						if (brazo.x<= 217) cout << "MANO en GONDOLA 1" << endl;
-						if (brazo.x > 217) cout << "MANO en GONDOLA 2" << endl;
+						cout << "MANO en GONDOLA 1" << endl;
 						cout << brazo << endl;
 						
 						int indiceExt = objr.second;
@@ -271,14 +282,16 @@ int main(int argc, char** argv)
 				vector<Point> vecpoli = getPolygon(roi,Linea1Gondola,Linea2Gondola);
 				
 				drawRectangle(frame,r,Scalar(255,0,0));
+				
 				};
 			//inserto en la base de datos
            	//dbconn.insertPickUpInformation(nFrame,0,objs[i].second,r.x,r.y,0);
            	//dibujo
            	
 		}
-    reg->writeinBD(dbconn);
-
+		
+//    reg->writeinBD(dbconn);
+	outputVideo << frame;
    // delete reg;
    
 		imshow("people detector", frame);
@@ -286,13 +299,12 @@ int main(int argc, char** argv)
 		if ( c == 'q' || c == 'Q' || c == 27)
 			break;
 	}
-    dbconn.writeCache();
+   // dbconn.writeCache();
 	frame.release();
     vc.release();
-    
     destroyAllWindows();
     
-    file.close();
+
     exit(0);
     return 0;
 }

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libinireaderc.a  CMakeFiles/inireaderc.dir/ini.c.o
+/usr/bin/ranlib libinireaderc.a

@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,27 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp
-cassert
--
-map
--
-list
--
-stdexcept
--
-string
--
-cstring
--
-iostream
--
-fstream
--
-sstream
--
-
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/rutines.cpp
+/mnt/datos/orco/orpocopo2/trackerdetect/rutines.cpp
 opencv2/highgui.hpp
 -
 opencv2/video.hpp
@@ -35,14 +15,12 @@ opencv2/videoio.hpp
 -
 opencv2/imgproc.hpp
 -
-ini.cpp
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp
 rutines.h
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/rutines.h
+/mnt/datos/orco/orpocopo2/trackerdetect/rutines.h
+iostream
+-
 
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/rutines.h
-ini.cpp
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.cpp
+/mnt/datos/orco/orpocopo2/trackerdetect/rutines.h
 opencv2/imgproc.hpp
 -
 

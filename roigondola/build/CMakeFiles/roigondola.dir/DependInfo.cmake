@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/mnt/datos/Dropbox/orco/orpocopo2/roigondola/roigondola.cpp" "/mnt/datos/Dropbox/orco/orpocopo2/roigondola/build/CMakeFiles/roigondola.dir/roigondola.cpp.o"
+  "/mnt/datos/orco/orpocopo2/roigondola/roigondola.cpp" "/mnt/datos/orco/orpocopo2/roigondola/build/CMakeFiles/roigondola.dir/roigondola.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

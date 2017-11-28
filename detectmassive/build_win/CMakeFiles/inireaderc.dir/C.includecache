@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.c
+stdio.h
+-
+ctype.h
+-
+string.h
+-
+ini.h
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.h
+stdlib.h
+-
+
+/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/ini.h
+stdio.h
+-
+

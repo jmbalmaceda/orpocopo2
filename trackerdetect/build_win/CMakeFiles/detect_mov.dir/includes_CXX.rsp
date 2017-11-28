@@ -1,1 +1,1 @@
--isystem /mnt/d/opencv_build/install/include -I/mnt/d/mysql-mariadb/include 
+-isystem /mylibs/opencvx64_win/install/include -I/mylibs/mariadb-conn-c_win/include/mariadb 

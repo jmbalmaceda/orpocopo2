@@ -1,0 +1,4 @@
+/mnt/datos/orco/orpocopo2/dnn_object_detection/build/CMakeFiles/rebuild_cache.dir
+/mnt/datos/orco/orpocopo2/dnn_object_detection/build/CMakeFiles/edit_cache.dir
+/mnt/datos/orco/orpocopo2/dnn_object_detection/build/CMakeFiles/ssd_object_detection.dir
+/mnt/datos/orco/orpocopo2/dnn_object_detection/build/CMakeFiles/yolo_object_detection.dir

@@ -1,0 +1,13 @@
+INPUT(
+./release/main.o
+./release/mainwindow.o
+./release/fnuevoentrenamiento.o
+./release/utils.o
+./release/fmodificarentrenamiento.o
+./release/INIReader.o
+./release/ini.o
+./release/trainingmanager_plugin_import.o
+./release/moc_mainwindow.o
+./release/moc_fnuevoentrenamiento.o
+./release/moc_fmodificarentrenamiento.o
+);

@@ -1,0 +1,2 @@
+/usr/bin/x86_64-w64-mingw32-ar qc libindex.a  CMakeFiles/index.dir/index.cpp.obj
+/usr/bin/x86_64-w64-mingw32-ranlib libindex.a

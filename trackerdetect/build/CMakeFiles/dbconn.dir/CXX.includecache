@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.cpp
+/mnt/datos/orco/orpocopo2/trackerdetect/DBConnection.cpp
 DBConnection.h
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.h
+/mnt/datos/orco/orpocopo2/trackerdetect/DBConnection.h
 mysql.h
 -
 mysql/mysql.h
@@ -28,7 +28,7 @@ sys/timeb.h
 cstring
 -
 
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.h
+/mnt/datos/orco/orpocopo2/trackerdetect/DBConnection.h
 mysql.h
 -
 mysql/mysql.h

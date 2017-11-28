@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,37 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/mnt/d/mysql-mariadb/include/m_ctype.h
-ctype.h
--
-
-/mnt/d/mysql-mariadb/include/my_list.h
-
-/mnt/d/mysql-mariadb/include/my_stmt.h
-
-/mnt/d/mysql-mariadb/include/mysql.h
-sys/types.h
--
-mysql_com.h
-/mnt/d/mysql-mariadb/include/mysql_com.h
-mysql_version.h
-/mnt/d/mysql-mariadb/include/mysql_version.h
-my_list.h
-/mnt/d/mysql-mariadb/include/my_list.h
-m_ctype.h
-/mnt/d/mysql-mariadb/include/m_ctype.h
-my_stmt.h
--
-
-/mnt/d/mysql-mariadb/include/mysql_com.h
-
-/mnt/d/mysql-mariadb/include/mysql_version.h
-custom_conf.h
--
-
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.cpp
+/mnt/datos/orco/orpocopo2/trackerdetect/DBConnection.cpp
 DBConnection.h
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.h
+/mnt/datos/orco/orpocopo2/trackerdetect/DBConnection.h
 mysql.h
 -
 mysql/mysql.h
@@ -56,11 +28,39 @@ sys/timeb.h
 cstring
 -
 
-/mnt/datos/Dropbox/orco/orpocopo2/trackerdetect/DBConnection.h
+/mnt/datos/orco/orpocopo2/trackerdetect/DBConnection.h
 mysql.h
 -
 mysql/mysql.h
 -
 string
+-
+
+/mylibs/mariadb-conn-c_win/include/mariadb/m_ctype.h
+ctype.h
+-
+
+/mylibs/mariadb-conn-c_win/include/mariadb/my_list.h
+
+/mylibs/mariadb-conn-c_win/include/mariadb/my_stmt.h
+
+/mylibs/mariadb-conn-c_win/include/mariadb/mysql.h
+sys/types.h
+-
+mysql_com.h
+/mylibs/mariadb-conn-c_win/include/mariadb/mysql_com.h
+mysql_version.h
+/mylibs/mariadb-conn-c_win/include/mariadb/mysql_version.h
+my_list.h
+/mylibs/mariadb-conn-c_win/include/mariadb/my_list.h
+m_ctype.h
+/mylibs/mariadb-conn-c_win/include/mariadb/m_ctype.h
+my_stmt.h
+-
+
+/mylibs/mariadb-conn-c_win/include/mariadb/mysql_com.h
+
+/mylibs/mariadb-conn-c_win/include/mariadb/mysql_version.h
+custom_conf.h
 -
 

@@ -1,1 +1,1 @@
-./trackerdetect ./recorte.mp4 out.txt
+./trackerdetect /mnt/datos/orco/quilmes/video1.avi out.txt

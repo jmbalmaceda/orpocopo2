@@ -1,0 +1,1 @@
+-isystem /mnt/d/opencv_buildx64/install/include -I/mnt/d/mariadb-connector-c/include/mariadb -isystem /mnt/d/opencv_buildx64/install/include/opencv 

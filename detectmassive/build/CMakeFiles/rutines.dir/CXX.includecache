@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/rutines.cpp
+opencv2/highgui.hpp
+-
+opencv2/video.hpp
+-
+opencv2/videoio.hpp
+-
+opencv2/imgproc.hpp
+-
+rutines.h
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/rutines.h
+iostream
+-
+
+/mnt/datos/Dropbox/orco/orpocopo2/detectmassive/rutines.h
+opencv2/imgproc.hpp
+-
+

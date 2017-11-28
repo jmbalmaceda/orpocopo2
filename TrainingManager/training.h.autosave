@@ -1,0 +1,16 @@
+#ifndef TRAINING_H
+#define TRAINING_H
+
+class Training{
+    
+public:
+    
+private:
+    QString name;
+    int width;
+    int height;
+    
+    
+    
+};
+#endif // TRAINING_H

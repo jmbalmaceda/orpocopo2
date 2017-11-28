@@ -1,0 +1,2 @@
+/usr/bin/x86_64-w64-mingw32-ar qc libtracker.a  CMakeFiles/tracker.dir/tracker.cpp.obj
+/usr/bin/x86_64-w64-mingw32-ranlib libtracker.a
