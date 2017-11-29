@@ -13,7 +13,7 @@ Al momento acepta dos parametros,
 
 puede escribir en la base de datos mysql, hay que descomentar para habilitar esa funcionalidad, aunque seria deseable que sea un parametro opcional.
 
-*** Configuracion ***
+### Configuracion
 
 El archivo conf.ini contiene las configuraciones al momento habilitadas, que son las siguientes:
 
